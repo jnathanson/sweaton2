@@ -1,0 +1,4 @@
+<% provide(:title, 'About Us') %>
+<h1>About Us</h1>
+  <p>Aperture Science has existed since 2007. We exist purely to bring you the very best in aperture technology and evil AI.
+</p>
