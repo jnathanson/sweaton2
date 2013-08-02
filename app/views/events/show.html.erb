@@ -1,0 +1,35 @@
+<% provide(:title, @event.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @event %>
+        <%= @event.name %>
+      </h1>
+    </section>
+    <section>
+      <%= render 'events/attending_form' if signed_in? %>
+      <p><b><%= link_to @event.venue.name, @event.venue %></b>, <%= @event.venue.street_address+", "+@event.venue.postcode %></p>
+      <%= gmaps4rails(@json) %>
+    </section>
+    <section>
+      <% if signed_in? && (current_user.admin? || (current_user.organiser? && Venue.find(@event.venue_id).user_id == current_user.id)) %>
+        <%= link_to "Edit", edit_event_path(@event) %>
+      <% end %>
+    </section>
+  </aside>
+  <div class="span8">
+    <section>
+      <%= @event.description %>
+    </section>
+    <section>
+      <% if @event.tags.any? %>
+        <h3>Categories: <%= @event.tags.count %></h3>
+        <ol class="tags">
+          <%= render @tags %>
+        </ol>
+        <%= will_paginate @tags %>
+      <% end %>
+    </section>
+  </div>
+</div>

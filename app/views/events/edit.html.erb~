@@ -1,0 +1,39 @@
+<% provide(:title, "Edit "+@event.name) %>
+<h1>Update event details for <%= @event.name %></h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@event) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+
+      <%= f.label 'Where?' %>
+      <%= @venues = Venue.all 
+      f.collection_select( :venue_id, @venues, :id, :name ) %>
+
+      <%= f.label :start_time # Needs to automatically start....when?
+                              %>
+      <%= f.date_select :start_time %>
+      <%= f.time_select :start_time %>
+
+      <%= f.label :end_time # Automatically starts... 30mins after start_time? Even when changed?
+                            %>
+      <%= f.date_select :end_time %>
+      <%= f.time_select :end_time %>
+
+      <%= @event.tags.each { |t| 
+                           link_to 'x', t.destroy
+                           render t }
+
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+    <%= gravatar_for @event %>
+    <a href="http://gravatar.com/emails">change</a>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1><%= @event.name %></h1>
+      <span><%= link_to "Back to event", @event %></span>
+      <span><b>Time:</b> <%= @user.microposts.count %></span>
+    </section>
+  </aside>
+  <div class="span8">
+    <h3><%= @title %></h3>
+    <% if @tags.any? %>
+      <ul class="tags">
+        <%= render @tags %>
+      </ul>
+      <%= will_paginate %>
+    <% end %>
+  </div>
+</div>

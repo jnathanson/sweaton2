@@ -1,0 +1,2 @@
+$("#tagify_form").html("<%= escape_javascript(render('events/tagify')) %>")
+$("#taggeds").html('<%= @event.tags.count %>')

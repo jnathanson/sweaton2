@@ -1,8 +1,104 @@
-<div class="center hero-unit">
-<h1>This is Link Up</h1>
+<% if signed_in? %>
+  <% if current_user.admin? %>
+    <% # Maybe an Announcements feed? A Manage Events/Venues link? Manage Users? "Toolbox?"
+       puts("You're an admin, I'm an admin, we're all admins TOGETHER :D") %>
+    <div class="row">
+      <aside class="span4">
+        <section>
+          <h1>
+            <%= gravatar_for current_user %>
+            <%= current_user.name %>
+          </h1>
+          <%= link_to "Account settings", edit_user_path(current_user.id) %>
+        </section>
+      </aside>
+      <div class="span8">
+        <section>
+          <h2>Listings</h2>
+          These'll need to be much more aesthetically pleasing. Mini icons on the left? Different font? How SHOULD the admin page look?!<br>
+          <%= link_to "Venues", venues_path %>
+          <br>
+          <%= link_to "Events", events_path %>
+        </section>
+        <section>
+          <h2>Toolbox</h2>
+          <%= link_to "Manage Users", users_path %>
+          <br>
+          <%= link_to "Manage Listings", events_path %>
+        </section>
+      </div>
+    </div>
+
+  <% else if current_user.mentor? %>
+    <% # Maybe an Announcements feed? A Manage Events/Venues link? Manage Users? "Toolbox?"
+       puts("You're an admin, I'm an admin, we're all admins TOGETHER :D") %>
+    <div class="row">
+      <aside class="span4">
+        <section>
+          <h1>
+            <%= gravatar_for current_user %>
+            <%= current_user.name %>
+          </h1>
+          <%= link_to "Account settings", edit_user_path(current_user.id) %>
+        </section>
+      </aside>
+      <div class="span8">
+        <section>
+          <h2>Listings</h2>
+         Mentors should also be able to favourite things like students.<br>
+          <%= link_to "Venues", venues_path %>
+          <br>
+          <%= link_to "Events", events_path %>
+        </section>
+        <section>
+          <h2>Toolbox</h2>
+          Here: List of mentees with icons.
+          <%= link_to "Manage Mentees", users_path %>
+        </section>
+      </div>
+    </div>
+
+  <% else if current_user.organiser? %>
+    <% # Maybe an Announcements feed? A Manage Events/Venues link? Manage Users? "Toolbox?"
+       puts("You're an admin, I'm an admin, we're all admins TOGETHER :D") %>
+    <div class="row">
+      <aside class="span4">
+        <section>
+          <h1>
+            <%= gravatar_for current_user %>
+            <%= current_user.name %>
+          </h1>
+          <%= link_to "Account settings", edit_user_path(current_user.id) %>
+        </section>
+      </aside>
+      <div class="span8">
+        <section>
+          <h2>Listings</h2>
+          Needs to link to JUST their creations, ie Event.find_by(me)<br>
+          <%= link_to "My Venues", venues_path %>
+          <br>
+          <%= link_to "My Events", events_path %>
+        </section>
+        <section>
+          <h2>Toolbox</h2>
+          <%= link_to "Manage Venues", users_path %>
+          <br>
+          <%= link_to "Manage Events", events_path %>
+        </section>
+      </div>
+    </div>
+
+  <% else %>
+    <p> You're logged in, but not with a special account. Favourites etc here. </p>
+  <% end
+     end
+     end %>
+<% else %>
+  <div class="center hero-unit">
+  <h1>This is Link Up</h1>
 	<p>
-	  Welcome to Link Up! You can create an account here!
+	  Welcome to Link Up! You can create an account here! Here's some text to describe the site!
 	<br>
-	  Here's some text to describe the site!
  	<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
-</div>
+  </div>
+<% end %>
