@@ -10,5 +10,4 @@
 </ul>
 
 <%= will_paginate %>
-<%= stylesheet_link_tag "gmaps4rails" %>
 

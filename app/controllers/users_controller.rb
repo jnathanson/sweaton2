@@ -48,17 +48,18 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  def favourited
+  def favourites
     @title = "Favourites"
     @user = User.find(params[:id])
     @venues = @user.venues.paginate(page: params[:page])
     render 'show_favourite'
   end
 
-  def attentions
+  def attendings
     @title = "Events attending"
     @user = User.find(params[:id])
-    @events = @user.event.paginate(page: params[:page])
+    @events = @user.events.all #.paginate(page: params[:page]) # only relevant for list view - um?!
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
     render 'show_attend'
   end
 

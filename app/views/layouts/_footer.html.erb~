@@ -9,5 +9,5 @@
       <li><a href="http://bbc.co.uk/news/">News</a></li>
     </ul>
   </nav>
-      <%= yield :scripts %>
+  <%= yield :scripts %>
 </footer>

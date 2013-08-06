@@ -4,16 +4,55 @@
     <section>
       <h1><%= @user.name %></h1>
       <span><%= link_to "Back to profile", @user %></span>
-      <span><b><%= @event.venue.name %></b>, <%= @event.venue.address+", "+@event.venue.postcode %></span>
     </section>
   </aside>
   <div class="span8">
     <h3><%= @title %></h3>
-    <% if @attention.any? %>
+    <% if @events.any? %>
+<div id="tabs">
+    <ul>
+        <li><a href="#calendar"><span>Calendar</span></a></li>
+        <li><a href="#map"><span>Map</span></a></li>
+        <li><a href="#list"><span>List</span></a></li>
+    </ul>
+    <div id="calendar">
+      <h2 id="month">
+        <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m") %>
+        <%=h @date.strftime("%B %Y") %>
+        <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m") %>
+      </h2>
+      <% calendar_for @events, :year => @date.year, :month => @date.month do |calendar| %>
+        <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
+        <% calendar.day(:day_method => :start_time) do |date, events| %>
+          <%= date.day %>
+          <ul>
+            <% for event in events %>
+              <li><%= link_to h(event.name), event %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      <% end %>
+
+<%= calendar_for(@events, :year => @date.year, :month => @date.month) do |t| %>
+  <%= t.head('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') %>
+  <%= t.day(:day_method => :start_time) do |day, events| %>
+    <%= day.day %>
+    <% events.each do |event| %>
+      <%= link_to h(event.name), event %>
+    <% end %>
+  <% end %>
+<% end %>
+    </div>
+    <div id="list">
       <ul class="attending">
-        <%= render @attendings %>
+        <%= render @events %>
       </ul>
-      <%= will_paginate %>
+      
+    </div>
+    <div id="map">
+      <p>Google Map view for all events here</p>
+    </div>
     <% end %>
   </div>
 </div>
+

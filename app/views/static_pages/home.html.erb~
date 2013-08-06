@@ -74,7 +74,7 @@
       <div class="span8">
         <section>
           <h2>Listings</h2>
-          These'll need to be much more aesthetically pleasing. Mini icons on the left? Different font? How SHOULD the admin page look?!<br>
+          Needs to link to JUST their creations, ie Event.find_by(me)<br>
           <%= link_to "My Venues", venues_path %>
           <br>
           <%= link_to "My Events", events_path %>

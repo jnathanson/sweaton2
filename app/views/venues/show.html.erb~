@@ -10,7 +10,6 @@
     <section>
       <%= render 'venues/favourite_form' if signed_in? %>
       <p><%= @venue.street_address+", "+@venue.postcode %></p>
-      <%= gmaps4rails(@json) %>
     </section>
     <section>
       <%= @venue.description %>
@@ -29,6 +28,7 @@
       <% end %>
     </section>
     <section>
+      <%= gmaps4rails(@json) %>
       <% if @venue.events.any? %>
         <h3>Events at this venue (<%= @venue.events.count %>)</h3>
         <ol class="events">

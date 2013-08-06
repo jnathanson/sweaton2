@@ -10,7 +10,6 @@
     <section>
       <%= render 'venues/favourite_form' if signed_in? %>
       <p><%= @venue.street_address+", "+@venue.postcode %></p>
-
     </section>
     <section>
       <%= @venue.description %>

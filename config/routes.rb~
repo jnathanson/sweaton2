@@ -3,20 +3,11 @@ Sweaton2::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :venues
-  resources :events do # any Onlys here?
-    member do
-      get :adjective
-    end
-  end
-  resources :tags, only: [:index] do
-    member do
-      get :subject
-    end
-  end
+  resources :events
+  resources :tags, only: [:index]
   resources :relationships, only: [:create, :destroy]
   resources :favourites, only: [:create, :destroy]
   resources :attendings, only: [:create, :destroy]
-
 
   root 'static_pages#home'
   match '/signup',  to: 'users#new',		via: 'get'

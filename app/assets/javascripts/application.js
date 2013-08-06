@@ -16,3 +16,10 @@
 //= require turbolinks
 //= require_tree .
 
+$(function() {
+  $("#event_start_time").datepicker();
+});
+
+$(function() {
+  $("#tabs").tabs();
+});

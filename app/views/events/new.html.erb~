@@ -1,4 +1,6 @@
 <% provide(:title, 'New event') %>
+<%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application" %>
+<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application" %>
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@event) do |f| %>
@@ -11,17 +13,16 @@
       <%= f.text_area :description %>
 
       <%= f.label 'Where?' %>
-      <%= @venues = Venue.all # Apparently This Is Deprecated. Funny that. Might wanna look up the Rails 4 version
+      <%= @venues = Venue.all
       f.collection_select( :venue_id, @venues, :id, :name ) %>
 
+      <%= f.text_field :start_time %>
       <%= f.label :start_time # Needs to automatically start....when?
                               %>
-      <%= f.date_select :start_time %>
       <%= f.time_select :start_time %>
 
       <%= f.label :end_time # Automatically starts... 30mins after start_time? Even when changed?
                             %>
-      <%= f.date_select :end_time %>
       <%= f.time_select :end_time %>
 
       <%= f.submit "Create event", class: "btn btn-large btn-primary" %>

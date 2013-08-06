@@ -61,5 +61,8 @@ gem 'unicorn'
 # Deploy with Capistrano
 gem 'capistrano'
 
-# To use debugger
-#gem 'ruby-debug'
+# For uploading images etc
+gem 'carrierwave'
+
+# Calendar capability
+gem "watu_table_builder", :require => "table_builder
