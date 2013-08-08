@@ -24,11 +24,26 @@
     <section>
       <% if signed_in? && (current_user.admin? || (current_user.organiser? && @venue.user_id == current_user.id)) %>
         <%= "Link to toggle view to create new event here" %>
-        <%= link_to 'Might want a toggle eventually', new_event_path %>
+        <%= render 'events/new_event' %>
       <% end %>
     </section>
     <section>
       <%= gmaps4rails(@json) %>
+      <% content_for :scripts do %>
+        <script type="text/javascript" charset="utf-8">
+        Gmaps.map.callback = function() {
+          if (Gmaps.map.markers.length == 1) {
+            //only one marker, choose the zoom level you expect
+            setTimeout(function() { Gmaps.map.serviceObject.setZoom(14);}, 50);
+          }
+          else{
+           //more than one marker, let's auto_zoom
+           Gmaps.map.map_options.auto_zoom = true;
+           Gmaps.map.adjustMapToBounds();
+          }
+        }
+      </script>
+      <% end %>
       <% if @venue.events.any? %>
         <h3>Events at this venue (<%= @venue.events.count %>)</h3>
         <ol class="events">

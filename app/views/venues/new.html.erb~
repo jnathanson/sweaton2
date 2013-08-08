@@ -14,7 +14,7 @@
       <%= f.label :postcode %>
       <%= f.text_field :postcode %>
 
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Create venue", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
 </div>

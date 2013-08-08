@@ -20,8 +20,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      UserMailer.welcome_email(@user).deliver
       sign_in @user
-      flash[:success] = "User created successfully - welcome to Link Up!"
+      flash[:success] = "User created successfully - we've sent you a confirmation email. Welcome to Link Up!"
       redirect_to @user
     else
       render 'new'
@@ -58,7 +59,7 @@ class UsersController < ApplicationController
   def attendings
     @title = "Events attending"
     @user = User.find(params[:id])
-    @events = @user.events.all #.paginate(page: params[:page]) # only relevant for list view - um?!
+    @events = @user.events.to_a #.paginate(page: params[:page]) # only relevant for list view - um?!
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     render 'show_attend'
   end

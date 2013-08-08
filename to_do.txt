@@ -1,45 +1,40 @@
 === TO DO
 
-sweaton/public/javascripts/ => all google maps scripts (!!!)
-
-Debatable solution for when a user is deleted, should any venues they have created be deleted too? (--> almost certainly yes)
-
-add extra validity tests (character limit on description? non-blank tests on.....? Should probably be okay to allow blank description and blank postcode, since either may be non-necessary or not applicable)
-
-Complex search
-
 Need a picture for each venue; no idea how to upload pics, but we need capability for it. Once that's done, can be adapted into extra user avatar stuff.
 --> following on from that, capability for each venue to have a gallery?
 --> Related: Each venue has its own avatar. This should appear on its .show page with the same width as the side panel. For the admin on that venue it should link to a "change" page for it, shouldn't be a link for anyone else.
 
 Make it that /signin and /signup are inaccessible when already logged in?
 
-Calendar
-
-Length restrictions on um everything
-
-Different homepages for each login type (ie / looks different for each, though login pages look the same). Different colour scheme?
-
 On Venue page, option to filter by type of event
-
-Minimap on side of Venue page and each event
 
 Option to show/hide New Event segment on Venue page if logged in etc (how?!)
 
 Also, need to make it that you can create an event from scratch from inventory and it shows venues alphabetically, OR that you select New Event from the Venue page, it renders the form ON that page (...?), and doesn't give you a choice for venue - the dropdown box is concreted over with that venue on.
 
-Re maps: hidden boolean IsMapped; kept by database. When you create a venue with no address, false. Then you enter address/postcode and look at where the Maps facility has put it in London. If that's right, you tick the box and it's saved. If it's wrong, you can manually change the location to wherever you click. THEN when minimap displays location, if IsMapped==false, it'll show a "This Venue Is Unmapped" message over the top; if true, it'll display the approved location.
-
-When you create an event at a venue you didn't make, it needs to say so - and remind you that you can't edit its details.
-
-Autofillers for event.new and event.edit form: automatically fills with a time and date suitable and with correct venue (as was just clicked).
-Questionable: Change dropdown box so as to only show venues that are yours?
-
 Tickboxes for tags that the event you just made has. Maybe a toggle view on Create and Edit so you can create an event quickly without needing to tag everything but can sort it out later?
 
-On tick index: You want more characteristic data layout than just a list, so have a grid of maybe 4 across and a page down alphabetic tag names each with a nice big generic colourful picture. Each type (sport, community volunteering, art, etc) is a different colour (team sports dark blue, different sports light blue?), while unclassified ones are grey. These pictures are - like the tags - determined by Link Up and stored hard on the server. Clicking each redirects you to events for that tag.
+On tag index: You want more characteristic data layout than just a list, so have a grid of maybe 4 across and a page down alphabetic tag names each with a nice big generic colourful picture. Each type (sport, community volunteering, art, etc) is a different colour (team sports dark blue, different sports light blue?), while unclassified ones are grey. These pictures are - like the tags - determined by Link Up and stored hard on the server. Clicking each redirects you to events for that tag.
 
 created_at and updated_at are ready-made so as to facilitate a Feed system: especially for mentors, they can go to a user page, find out (favourites.sort_by(created_at) and attendings.sort_by(created_at)) what they've been doing chronologically.
+
+Space for user to custom add things to their map, eg home or school
+
+Local venues box: Gets all venues within a certain radius of user's home address from venues_controller and displays list accordingly
+
+Popular Near You: (really?!) well it's just a tag list I guess
+
+Events Today: Time driven list of events in the next day, not a calendar.
+
+When you click on tags,
+    tag.show
+        tab view of... (does this really go with existing design? discuss tomorrow)
+        map view
+        calendar view
+        alphabetic list
+
+Venue homepage: map (aside? maybe makes more sense to scroll down)
+        event calendar
 
 ========= NOTES ON THINGS ALREADY DONE ==========
 
@@ -58,7 +53,4 @@ Find a way of ordering venues alphabetically REGARDLESS of who created them. How
 cba to find a validity tester for postcodes; if they can't find their own postcode it's their own bloody fault
 
 Events have tags; venues do not
-
-
-
 

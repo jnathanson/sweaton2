@@ -1,5 +1,4 @@
 <li>
-  <% puts('Showing '+event.id.to_s) %>
-  <span class="name and date"><%= link_to event.name, event_path(event.id) %> <%= event.start_time.to_s %>-<%= event.end_time.to_s %></span>
+  <span class="name and date"><%= link_to event.name, event_path(event.id), 'data-no-turbolink => true' %> <%= event.start_time.to_s %>-<%= event.end_time.to_s %></span>
   <span class="description"><%= event.description %></span>
 </li>

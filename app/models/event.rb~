@@ -9,6 +9,14 @@ class Event < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, length: { maximum: 200 }
 
+  acts_as_gmappable
+  geocoded_by :gmaps4rails_address
+  after_validation :geocode#, :if => :address_changed?
+
+  def gmaps4rails_address
+    Venue.find(:venue_id).gmaps4rails_address
+  end
+
   def tagged?(property)
     relationships.find_by(tag_id: property.id)
   end
@@ -20,18 +28,5 @@ class Event < ActiveRecord::Base
   def untagify!(property)
     relationships.find_by(tag_id: property.id).destroy
   end
-
-  def is_attending?(party)
-    attendings.find_by(event_id: party.id)
-  end
-
-  def attend!(party)
-    attendings.create!(event_id: party.id)
-  end
-
-  def truant!(party)
-    attendings.find_by(event_id: party.id).destroy
-  end
-
 
 end

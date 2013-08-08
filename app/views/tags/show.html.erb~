@@ -1,0 +1,15 @@
+<% provide(:title, 'Category '+@tag.name) %>
+
+<h1>Browse <%= @tag.name %> events</h1>
+
+<% if @tags.any? %>
+
+  <ul class="events">
+    <%= render @events %>
+  </ul>
+
+<% else %>
+
+  <p>No events listed with this tag.</p>
+
+<% end %>

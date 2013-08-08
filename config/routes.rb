@@ -8,7 +8,7 @@ Sweaton2::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :venues
   resources :events
-  resources :tags, only: [:index]
+  resources :tags, only: [:index, :show]
   resources :relationships, only: [:create, :destroy]
   resources :favourites, only: [:create, :destroy]
   resources :attendings, only: [:create, :destroy]
@@ -18,6 +18,7 @@ Sweaton2::Application.routes.draw do
   match '/signin',  to: 'sessions#new',		via: 'get'
   match '/signout', to: 'sessions#destroy',	via: 'delete'
   match '/venues',  to: 'venues#index',		via: 'get'
+  match '/myvenues', to: 'venues#index_my', via: 'get'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'

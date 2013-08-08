@@ -7,6 +7,7 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
+    @events = @tag.events.all#.paginate(params[:page])
   end
 
   def new

@@ -70,12 +70,15 @@
           </h1>
           <%= link_to "Account settings", edit_user_path(current_user.id) %>
         </section>
+        <section>
+          <%= render '/shared/toolbox' %>
+        </section>
       </aside>
       <div class="span8">
         <section>
           <h2>Listings</h2>
           Needs to link to JUST their creations, ie Event.find_by(me)<br>
-          <%= link_to "My Venues", venues_path %>
+          <%= link_to "My Venues", myvenues_path %>
           <br>
           <%= link_to "My Events", events_path %>
         </section>
@@ -89,15 +92,27 @@
     </div>
 
   <% else %>
-    <p> You're logged in, but not with a special account. Favourites etc here. </p>
+    <div id="top_container">
+      <%= gmaps4rails(@json) %>
+    </div>
+    <div id="bottomleft_container">
+      <p>New events go here</p>
+    </div>
+    <div id="bottomright_container">
+      <p>Tags go here</p>
+    </div>
+
   <% end
      end
      end %>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
 <% else %>
   <div class="center hero-unit">
   <h1>This is Link Up</h1>
 	<p>
-	  Welcome to Link Up! You can create an account here! Here's some text to describe the site!
+	  Welcome to Link Up! We're currently undergoing maintenance, please log in to access.
 	<br>
  	<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
   </div>

@@ -1,7 +1,6 @@
 <% provide(:title, 'All venues') %>
 <h1>All venues</h1>
 <%= gmaps4rails(@json) %>
-<%= @json %>
 
 <%= will_paginate %>
 

@@ -1,4 +1,2 @@
-<li>
-  <span class="name"> <%= link_to image_tag("tag_icons/"+tag.name+".png", alt: "Rails"), '#' %> <%= link_to tag.name, '#' %></span>
-  <p>Will eventually want a series of images for each tag, with nice big text, each of which links to all events for that tag (not tag_path). But this'll do for now</p>
-</li>
+  <span class="name"> <%= link_to image_tag("tag_icons/"+tag.name+".png", alt: "Rails"), tag %> <%= link_to tag.name, '#' %></span>
+

@@ -9,6 +9,14 @@ class Event < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, length: { maximum: 200 }
 
+  acts_as_gmappable
+  geocoded_by :gmaps4rails_address
+  after_validation :geocode#, :if => :address_changed?
+
+  def gmaps4rails_address
+    "#{venue.gmaps4rails_address}"
+  end
+
   def tagged?(property)
     relationships.find_by(tag_id: property.id)
   end

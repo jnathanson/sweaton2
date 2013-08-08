@@ -1,0 +1,18 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1><%= @user.name %></h1>
+      <span><%= link_to "Back to profile", @user %></span>
+    </section>
+  </aside>
+  <div class="span8">
+    <h3><%= @title %></h3>
+    <% if @venues.any? %>
+      <ul class="favourites">
+        <%= render @venues %>
+      </ul>
+      <%= will_paginate @venues %>
+    <% end %>
+  </div>
+</div>

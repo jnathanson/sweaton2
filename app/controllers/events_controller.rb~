@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
-  before_action :organiser_account, only: [:create, :edit, :update, :destroy]
-  before_action :correct_or_admin,  only: [:create, :edit, :update, :destroy]
+  before_action :organiser_account, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_or_admin,  only: [:edit, :update, :destroy]
 
   def index
     if params[:venue_id]==nil
@@ -16,19 +16,21 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @tags = @event.tags.paginate(page: params[:page])
-  end
-
-  def new
-    @event = Event.new
+    @json = @event.venue.to_gmaps4rails do |venue, marker|
+    marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :venue => venue})
+    marker.title "#{venue.name}"
+    marker.picture({:picture => "/assets/tag_icons/assassins.png", :width => 32, :height => 32})
+    end
   end
 
   def create
-    @event = Venue.find(event_params[:venue_id]).events.build(event_params)
+    puts "#####################################"+params[:event][:venue_id].to_s
+    @event = Venue.find(params[:event][:venue_id]).events.build(params[event_params])
     if @event.save
       flash[:success] = "Event created!"
-      redirect_to @event.venue
+      redirect_to @event
     else
-      render 'new'
+      render 'shared/error_messages'
     end
   end
 
@@ -37,8 +39,8 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = Event.find(event_params[:id])
-    if @event.update_attributes(event_params)
+    @event = Event.find(params[:id])
+    if @event.update_attributes(params[:event])
       flash[:success] = "Event details updated"
       redirect_to @event
     else
@@ -61,11 +63,11 @@ class EventsController < ApplicationController
   private
 
     def event_params
-      params.require(:event).permit(:name, :description, :start_time, :end_time, :venue_id, :tags)
+      params.require(:event).permit(:name, :description, :start_time, :end_time, :tags, :venue_id)
     end
 
     def correct_or_admin
-      current_venue = Venue.find(event_params[:venue_id])
+      current_venue = Venue.find(params[:venue_id])
       redirect_to(root_path) unless signed_in? && ((current_venue.user_id == current_user.id) || current_user.admin?)
     end
 

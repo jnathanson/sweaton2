@@ -1,9 +1,9 @@
 <li>
   <%= gravatar_for venue %>
   <% if signed_in? && current_user.organiser? && current_user.id == venue.user_id %>
-  <b><%= link_to venue.name, venue %></b>
+    <b><%= link_to venue.name, venue, 'data-no-turbolink => true' %></b>
   <% else %>
-  <%= link_to venue.name, venue %>
+    <%= link_to venue.name, venue, 'data-no-turbolink => true' %>
   <% end %>
   <% if signed_in? && (current_user.admin? || current_user.id == venue.user_id) %>
     | <%= link_to "delete", venue, method: :delete,

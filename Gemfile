@@ -34,7 +34,7 @@ end
 gem 'sass-rails', '4.0.0'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.0'
-gem 'jquery-rails', '2.2.1'
+gem 'jquery-rails'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 
@@ -48,12 +48,15 @@ group :production do
 end
 
 gem 'gmaps4rails'
+gem 'geocoder'
 
 #Below gems included for similarity with sweaton and of unknown purpose?!
 gem 'mysql'
 
 gem 'json'
 
+gem 'jquery-ui-rails'
+gem 'jquery-ui-sass-rails'
 
 # Use unicorn as the app server
 gem 'unicorn'
@@ -66,3 +69,4 @@ gem 'carrierwave'
 
 # Calendar capability
 gem "watu_table_builder", :require => "table_builder"
+

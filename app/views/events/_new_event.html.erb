@@ -1,0 +1,23 @@
+<%= form_for(@event) do |f| %>
+
+  <%= f.hidden_field(:venue_id, :value => @venue.id) %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.text_field :start_time %>
+  <%= f.label :start_time # Needs to automatically start....when?
+                              %>
+  <%= f.time_select :start_time %>
+
+  <%= f.label :end_time # Automatically starts... 30mins after start_time? Even when changed?
+                           %>
+  <%= f.time_select :end_time %>
+
+  <%= f.submit "Create event", class: "btn btn-large btn-primary" %>
+
+<% end %>

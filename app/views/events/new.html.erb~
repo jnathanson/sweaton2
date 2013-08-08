@@ -1,13 +1,14 @@
 <% provide(:title, 'New event') %>
-<%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application" %>
-<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application" %>
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@event) do |f| %>
+    <%= f.hidden_field(:venue_id, :value => params[:id]) %>
     <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :name %>
       <%= f.text_field :name %>
+
+      <p>This is the actual form, not the cheap imitation</p>
 
       <%= f.label :description %>
       <%= f.text_area :description %>

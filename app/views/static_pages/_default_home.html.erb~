@@ -1,0 +1,10 @@
+<div id="top_container">
+  <%= gmaps4rails(@json) %>
+</div>
+<div id="bottomleft_container">
+
+</div>
+<div id="bottomright_container">
+
+</div>
+

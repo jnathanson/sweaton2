@@ -9,34 +9,36 @@
   <div class="span8">
     <h3><%= @title %></h3>
     <% if @events.any? %>
-<div id="tabs">
-    <ul>
-        <li><a href="#calendar"><span>Calendar</span></a></li>
-        <li><a href="#map"><span>Map</span></a></li>
-        <li><a href="#list"><span>List</span></a></li>
-    </ul>
-    <div id="calendar">
 
-<%= calendar_for(@events, :year => @date.year, :month => @date.month) do |t| %>
-  <%= t.head('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') %>
-  <%= t.day(:day_method => :start_time) do |day, events| %>
-    <%= day.day %>
-    <% events.each do |event| %>
-      <%= link_to h(event.name), event %>
-    <% end %>
-  <% end %>
-<% end %>
-    </div>
-    <div id="list">
-      <ul class="attending">
-        <%= render @events %>
-      </ul>
-      
-    </div>
-    <div id="map">
-      <p>Google Map view for all events here</p>
-    </div>
+      <div id="tabs">
+        <ul>
+          <li><a href="#calendar"><span>Calendar</span></a></li>
+          <li><a href="#map"><span>Map</span></a></li>
+          <li><a href="#list"><span>List</span></a></li>
+        </ul>
+        <div id="calendar">
+          <%= calendar_for(@events, :year => @date.year, :month => @date.month) do |t| %>
+            <%= t.head('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') %>
+            <%= t.day(:day_method => :start_time) do |day, events| %>
+              <%= day.day %>
+              <% events.each do |event| %>
+                <%= link_to h(event.name), event %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div id="list">
+          <ul class="attending">
+            <%= render @events %>
+          </ul>
+        </div>
+
+        <div id="map">
+          <p>Google Map view for all events here</p>
+        </div>
+      </div>
+
     <% end %>
   </div>
 </div>
-

@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :venues, through: :favourites
   has_many :events, through: :attendings
   has_many :favourites, dependent: :destroy
-  has_many :attendings, dependent: :destroy
+  has_many :attendings, dependent: :destroy 
   before_save { self.email = email.downcase }
   before_create :create_remember_token
   validates :name, presence: true, length: { maximum: 50 }
@@ -12,6 +12,21 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, length: { minimum: 6 }
+  acts_as_gmappable
+  after_validation :geocode
+  if :home_address?
+    geocoded_by :gmaps4rails_address
+  else
+    geocoded_by :ip_address
+  end
+
+  def ip_address
+    request.remote_ip
+  end
+
+  def gmaps4rails_address
+    "#{home_address}, #{home_postcode}"
+  end
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
