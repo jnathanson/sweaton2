@@ -34,7 +34,7 @@
         Gmaps.map.callback = function() {
           if (Gmaps.map.markers.length == 1) {
             //only one marker, choose the zoom level you expect
-            setTimeout(function() { Gmaps.map.serviceObject.setZoom(14);}, 50);
+            setTimeout(function() { Gmaps.map.serviceObject.setZoom(15);}, 50);
           }
           else{
            //more than one marker, let's auto_zoom
@@ -46,6 +46,17 @@
       <% end %>
       <% if @venue.events.any? %>
         <h3>Events at this venue (<%= @venue.events.count %>)</h3>
+        <div id="calendar">
+          <%= calendar_for(@venue.events, :year => @date.year, :month => @date.month) do |t| %>
+            <%= t.head('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') %>
+            <%= t.day(:day_method => :start_time) do |day, events| %>
+              <%= day.day %>
+              <% events.each do |event| %>
+                <%= link_to h(event.name), @venue.event %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
         <ol class="events">
           <%= render @events %>
         </ol>

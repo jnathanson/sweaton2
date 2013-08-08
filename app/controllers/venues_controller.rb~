@@ -22,14 +22,15 @@ class VenuesController < ApplicationController
     @venue = Venue.find(params[:id])
     @events = @venue.events.paginate(page: params[:page])
     if correct_or_admin
+      puts ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"+@venue.id.to_s+";;;;;;;;;;;;;;;;;;;;;;;;;;:"
       @event = @venue.events.build
       puts "=========================="+@event.venue_id.to_s+"@@@@@@@@@@@@@@@@@@@@@@@@@@@"
     end
-    @json = @venue.to_gmaps4rails
-    marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => @venue})
-    marker.title "#{@venue.name}"
+    @json = @venue.to_gmaps4rails do |venue, marker|
+    marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
+    marker.title "#{venue.name}"
     marker.picture({:picture => "/assets/tag_icons/assassins.png", :width => 32, :height => 32})
-
+    end
     # Here on Microposts there's a link to create a new post, but with Events instead need to
     # have event only created when you click the only-visible-when-correct-user link to view subform.
   end

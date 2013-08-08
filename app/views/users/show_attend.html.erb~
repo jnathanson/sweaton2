@@ -9,6 +9,7 @@
   <div class="span8">
     <h3><%= @title %></h3>
     <% if @events.any? %>
+
       <div id="tabs">
         <ul>
           <li><a href="#calendar"><span>Calendar</span></a></li>
@@ -37,6 +38,7 @@
           <p>Google Map view for all events here</p>
         </div>
       </div>
+
     <% end %>
   </div>
 </div>

@@ -18,6 +18,24 @@ On tag index: You want more characteristic data layout than just a list, so have
 
 created_at and updated_at are ready-made so as to facilitate a Feed system: especially for mentors, they can go to a user page, find out (favourites.sort_by(created_at) and attendings.sort_by(created_at)) what they've been doing chronologically.
 
+Space for user to custom add things to their map, eg home or school
+
+Local venues box: Gets all venues within a certain radius of user's home address from venues_controller and displays list accordingly
+
+Popular Near You: (really?!) well it's just a tag list I guess
+
+Events Today: Time driven list of events in the next day, not a calendar.
+
+When you click on tags,
+    tag.show
+        tab view of... (does this really go with existing design? discuss tomorrow)
+        map view
+        calendar view
+        alphabetic list
+
+Venue homepage: map (aside? maybe makes more sense to scroll down)
+        event calendar
+
 ========= NOTES ON THINGS ALREADY DONE ==========
 
 Scatch this. Anyone with an organiser account can create an event and register it at any venue. But they can't edit the venue unless it's theirs. ?Comprende?

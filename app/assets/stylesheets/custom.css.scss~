@@ -63,12 +63,12 @@ top_container {
 
 bottomleft_container {
   float: left;
-  width: 50%
+  width: 50%;
 }
 
 bottomright_container {
-  float: right
-  width: 50%
+  float: right;
+  width: 50%;
 }
 
 /* typography */

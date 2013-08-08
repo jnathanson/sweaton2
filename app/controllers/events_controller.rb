@@ -30,7 +30,8 @@ class EventsController < ApplicationController
       flash[:success] = "Event created!"
       redirect_to @event
     else
-      render 'shared/error_messages'
+      flash[:error] = "Nope nope nope nope nope"
+      redirect_to @event.venue
     end
   end
 

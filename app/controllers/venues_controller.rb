@@ -21,7 +21,9 @@ class VenuesController < ApplicationController
   def show
     @venue = Venue.find(params[:id])
     @events = @venue.events.paginate(page: params[:page])
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
     if correct_or_admin
+      puts ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"+@venue.id.to_s+";;;;;;;;;;;;;;;;;;;;;;;;;;:"
       @event = @venue.events.build
       puts "=========================="+@event.venue_id.to_s+"@@@@@@@@@@@@@@@@@@@@@@@@@@@"
     end

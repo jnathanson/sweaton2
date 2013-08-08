@@ -38,7 +38,6 @@ Venue homepage: map (aside? maybe makes more sense to scroll down)
 
 ========= NOTES ON THINGS ALREADY DONE ==========
 
-Scatch this. Anyone with an organiser account can create an event and register it at any venue. But they can't edit the venue unless it's theirs. ?Comprende?
 
 ===== FURRIFY THIS SHNIZZLE venues.has_many(events) and events.belong_to(venues) =====
 

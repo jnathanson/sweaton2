@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     if @user.save
       UserMailer.welcome_email(@user).deliver
       sign_in @user
-      flash[:success] = "User created successfully - welcome to Link Up!"
+      flash[:success] = "User created successfully - we've sent you a confirmation email. Welcome to Link Up!"
       redirect_to @user
     else
       render 'new'
@@ -60,6 +60,11 @@ class UsersController < ApplicationController
     @title = "Events attending"
     @user = User.find(params[:id])
     @events = @user.events.to_a #.paginate(page: params[:page]) # only relevant for list view - um?!
+    @atts = @events.to_gmaps4rails do |event, marker|
+      marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event})
+      marker.title "#{event.name}"
+      marker.picture({:picture => "/assets/tag_icons/drinking society.png", :width => 32, :height => 32})
+    end
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     render 'show_attend'
   end

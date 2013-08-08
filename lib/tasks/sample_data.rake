@@ -54,14 +54,14 @@ namespace :db do
 		    description: "We specialise in Sport!", user_id: 21-n,
                     postcode: '', street_address: n.to_s+' Hammersmith Road', gmaps: true)
     end
-    venues = Venue.all(limit: 6)
+    venues = Venue.all
     25.times do
       content = Faker::Lorem.sentence(5)
-      start_time = 3.days.from_now
-      venues.each { |venue| 
-                         ev = venue.events.build(name: "Society Meeting", description: content, start_time: start_time, end_time: start_time.advance(hours: 1))
+      start_time = 3.days.from_now.advance(days: rand(-20..20))
+      venues.each { |venue| num = rand(1..13)
+                         ev = venue.events.build(name: Tag.find(num).name+" club", description: content, start_time: start_time, end_time: start_time.advance(hours: 1))
                          ev.save
-                         ev.tagify!(Tag.find(rand(1..13))) }
+                         ev.tagify!(Tag.find(num)) }
     end
 
 
