@@ -24,7 +24,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    puts "#####################################"+params[:event][:venue_id].to_s
     @event = Venue.find(params[:event][:venue_id]).events.build(params[event_params])
     if @event.save
       flash[:success] = "Event created!"

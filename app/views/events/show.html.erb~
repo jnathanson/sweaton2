@@ -8,7 +8,7 @@
       </h1>
     </section>
     <section>
-      <% render 'events/attending_form' if signed_in? %>
+      <%= render 'events/attending_form' if signed_in? %>
       <p><b><%= link_to @event.venue.name, @event.venue %></b>, <%= @event.venue.street_address+", "+@event.venue.postcode %></p>
       <%= gmaps4rails(@json) %>
     </section>
@@ -21,6 +21,12 @@
   <div class="span8">
     <section>
       <%= @event.description %>
+      <br>
+      <%= @event.start_time.to_s(:time_day)+", "+"Tuesdays... FOR NOW" %>
+      <br>
+      Gender: <%= @event.gender %> | Cost: <%= @event.cost %> 
+      <br>
+      <%= @event.website+", contact "+@event.contact %>
     </section>
     <section>
       <% if @event.tags.any? %>

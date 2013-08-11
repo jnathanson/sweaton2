@@ -8,6 +8,8 @@ class Event < ActiveRecord::Base
   validates :venue_id, presence: true
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, length: { maximum: 200 }
+  validates :start_time, presence: true
+  # End_time not necessary, it should automatically end 30 minutes after start_time if left blank (but this is impossible with form format, you could only do that by sending a direct html request, not out of the question though)
 
   acts_as_gmappable
   geocoded_by :gmaps4rails_address

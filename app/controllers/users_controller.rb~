@@ -59,13 +59,14 @@ class UsersController < ApplicationController
   def attendings
     @title = "Events attending"
     @user = User.find(params[:id])
-    @events = @user.events.to_a #.paginate(page: params[:page]) # only relevant for list view - um?!
-    @atts = @events.to_gmaps4rails do |event, marker|
+    @events = @user.events.paginate(page: params[:page])
+    @json = @events.to_gmaps4rails do |event, marker|
       marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event})
       marker.title "#{event.name}"
       marker.picture({:picture => "/assets/tag_icons/drinking society.png", :width => 32, :height => 32})
     end
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
+
     render 'show_attend'
   end
 

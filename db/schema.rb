@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130808151518) do
+ActiveRecord::Schema.define(version: 20130809164112) do
 
   create_table "attendings", force: true do |t|
     t.integer  "user_id"
@@ -35,6 +35,11 @@ ActiveRecord::Schema.define(version: 20130808151518) do
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps",       default: true
+    t.integer  "day"
+    t.string   "cost"
+    t.string   "contact"
+    t.string   "website"
+    t.string   "gender"
   end
 
   add_index "events", ["start_time"], name: "index_events_on_start_time"

@@ -1,4 +1,16 @@
 <% provide(:title, @title) %>
+<link rel='stylesheet' type='text/css' href='fullcalendar.css' />
+<script type='text/javascript' src='jquery.js'></script>
+<script type='text/javascript' src='fullcalendar.js'></script>
+<script>
+  $(document).ready(function() {
+    $('#calendar').fullCalendar({
+      dayClick: function() {
+        
+      }
+    })
+  });
+</script>
 <div class="row">
   <aside class="span4">
     <section>
@@ -17,9 +29,16 @@
           <li><a href="#list"><span>List</span></a></li>
         </ul>
         <div id="calendar">
+          <h2 id="month">
+            <%= link_to "<", :month => (@date.beginning_of_month-1) %>
+            <%= h @date.strftime("%B %Y") %>
+            <%= link_to ">", :month => (@date.end_of_month+1) %>
+          </h2>
+          <% 
           <%= calendar_for(@events, :year => @date.year, :month => @date.month) do |t| %>
             <%= t.head('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') %>
-            <%= t.day(:day_method => :start_time) do |day, events| %>
+            <%= t.day(:day_method => ) do |day, events| %>
+            <% # here the day_methods needs to accept day_of_week=Monday instead of date per se - how?!?! %>
               <%= day.day %>
               <% events.each do |event| %>
                 <%= link_to h(event.name), event %>
@@ -35,7 +54,7 @@
         </div>
 
         <div id="map">
-          <p>Google Map view for all events here</p>
+          <%= gmaps4rails(@json) %>
         </div>
       </div>
 

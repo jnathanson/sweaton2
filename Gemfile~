@@ -69,6 +69,3 @@ gem 'carrierwave'
 
 # Calendar capability
 gem "watu_table_builder", :require => "table_builder"
-
-# For searching
-gem 'ransack'
