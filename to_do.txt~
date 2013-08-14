@@ -1,5 +1,12 @@
 === TO DO
 
+String search function APPEARS to do ONE search but in fact carries out THREE:
+1) events
+2) venues
+3) news items/updates
+
+
+
 Need a picture for each venue; no idea how to upload pics, but we need capability for it. Once that's done, can be adapted into extra user avatar stuff.
 --> following on from that, capability for each venue to have a gallery?
 --> Related: Each venue has its own avatar. This should appear on its .show page with the same width as the side panel. For the admin on that venue it should link to a "change" page for it, shouldn't be a link for anyone else.
@@ -38,7 +45,6 @@ Venue homepage: map (aside? maybe makes more sense to scroll down)
 
 ========= NOTES ON THINGS ALREADY DONE ==========
 
-Scatch this. Anyone with an organiser account can create an event and register it at any venue. But they can't edit the venue unless it's theirs. ?Comprende?
 
 ===== FURRIFY THIS SHNIZZLE venues.has_many(events) and events.belong_to(venues) =====
 

@@ -63,11 +63,14 @@ namespace :db do
       website = "contact@sports-club.co.uk"
       gender = "Both"
       venues.each { |venue| num = rand(1..13)
-                         ev = venue.events.build(name: Tag.find(num).name+" club", description: content, start_time: start_time, end_time: start_time.advance(hours: 1), contact: contact, website: website, cost: rand(1..10).to_s(:currency, unit: '£'))
+                         ev = venue.events.build(name: Tag.find(num).name+" club", description: content, start_time: start_time, end_time: start_time.advance(hours: 1), contact: contact, website: website, cost: rand(1..10).to_s(:currency, unit: '£'), gender: gender)
                          ev.save
                          ev.tagify!(Tag.find(num)) }
     end
 
+    users = User.all
+    users.each { |user| puts user.id.to_s+"!, "
+                        user.diary_entries.build(name: "Supervisor meeting", start_time: 3.days.from_now.advance(days: rand(-3..10)), repeating: false) }
 
   end
 end

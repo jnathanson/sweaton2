@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :venues, through: :favourites
   has_many :events, through: :attendings
+  has_many :diary_entries # oh them lovely plurals
   has_many :favourites, dependent: :destroy
   has_many :attendings, dependent: :destroy 
   before_save { self.email = email.downcase }
@@ -14,6 +15,7 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
   acts_as_gmappable
   after_validation :geocode
+
   if :home_address?
     geocoded_by :gmaps4rails_address
   else

@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  serialize :schedule, Hash
+
   belongs_to :venue
   has_many :tags, through: :relationships
   has_many :attendings, dependent: :destroy

@@ -8,7 +8,7 @@ class StaticPagesController < ApplicationController
     # saved Home address.
     if signed_in?
       @venues = current_user.venues
-      @events = current_user.events
+      @events = current_user.events if current_user.events.any?
       @favs = @venues.to_gmaps4rails do |venue, marker|
         marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
         marker.title "#{venue.name}"
@@ -20,7 +20,7 @@ class StaticPagesController < ApplicationController
         marker.picture({:picture => "/assets/tag_icons/drinking society.png", :width => 32, :height => 32})
       end
       @house = current_user.to_gmaps4rails do |house, marker|
-        marker.picture({:picture => "/assets/tag_icons/drinking society.png", :width => 32, :height => 32})
+        marker.picture({:picture => "/assets/tag_icons/martial arts.png", :width => 32, :height => 32})
       end
       @json = (JSON.parse(@favs) + JSON.parse(@atts) + JSON.parse(@house)).to_json
 

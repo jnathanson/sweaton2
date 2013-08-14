@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130809164112) do
+ActiveRecord::Schema.define(version: 20130814094312) do
 
   create_table "attendings", force: true do |t|
     t.integer  "user_id"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20130809164112) do
   add_index "attendings", ["event_id"], name: "index_attendings_on_event_id"
   add_index "attendings", ["user_id", "event_id"], name: "index_attendings_on_user_id_and_event_id", unique: true
   add_index "attendings", ["user_id"], name: "index_attendings_on_user_id"
+
+  create_table "diary_entries", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "start_time"
+    t.boolean  "repeating"
+    t.integer  "event_id",   default: 0
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "events", force: true do |t|
     t.string   "name"

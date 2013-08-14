@@ -1,5 +1,12 @@
 === TO DO
 
+String search function APPEARS to do ONE search but in fact carries out THREE:
+1) events
+2) venues
+3) news items/updates
+
+More specialised search function instead carries out ONE search on events with relevant attributes.
+
 Need a picture for each venue; no idea how to upload pics, but we need capability for it. Once that's done, can be adapted into extra user avatar stuff.
 --> following on from that, capability for each venue to have a gallery?
 --> Related: Each venue has its own avatar. This should appear on its .show page with the same width as the side panel. For the admin on that venue it should link to a "change" page for it, shouldn't be a link for anyone else.

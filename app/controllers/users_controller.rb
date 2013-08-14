@@ -57,16 +57,16 @@ class UsersController < ApplicationController
   end
 
   def attendings
-    @title = "Events attending"
+    @title = "Your events"
     @user = User.find(params[:id])
     @events = @user.events
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
     @json = @events.to_gmaps4rails do |event, marker|
-      marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event})
+      marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event })
       marker.title "#{event.name}"
       marker.picture({:picture => "/assets/tag_icons/drinking society.png", :width => 32, :height => 32})
     end
-    @date = params[:month] ? Date.parse(params[:month]) : Date.today
-
+    @entries = @user.diary_entries
     render 'show_attend'
   end
 

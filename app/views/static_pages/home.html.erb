@@ -1,7 +1,6 @@
+<p><i>Link Up will help you find opportunities in your local area.</i></p>
 <% if signed_in? %>
   <% if current_user.admin? %>
-    <% # Maybe an Announcements feed? A Manage Events/Venues link? Manage Users? "Toolbox?"
-       puts("You're an admin, I'm an admin, we're all admins TOGETHER :D") %>
     <div class="row">
       <aside class="span4">
         <section>
@@ -30,8 +29,6 @@
     </div>
 
   <% else if current_user.mentor? %>
-    <% # Maybe an Announcements feed? A Manage Events/Venues link? Manage Users? "Toolbox?"
-       puts("You're an admin, I'm an admin, we're all admins TOGETHER :D") %>
     <div class="row">
       <aside class="span4">
         <section>
@@ -59,8 +56,6 @@
     </div>
 
   <% else if current_user.organiser? %>
-    <% # Maybe an Announcements feed? A Manage Events/Venues link? Manage Users? "Toolbox?"
-       puts("You're an admin, I'm an admin, we're all admins TOGETHER :D") %>
     <div class="row">
       <aside class="span4">
         <section>

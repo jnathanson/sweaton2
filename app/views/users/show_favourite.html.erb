@@ -13,6 +13,8 @@
         <%= render @venues %>
       </ul>
       <%= will_paginate @venues %>
+    <% else %>
+      <p>None so far. <%= link_to 'Favourite venues', venues_path %> to see the events they're running.</p>
     <% end %>
   </div>
 </div>
