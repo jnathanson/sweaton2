@@ -25,7 +25,6 @@
           <%= calendar_for(@entries, :year => @date.year, :month => @date.month) do |t| %>
             <%= t.head('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') %>
             <%= t.day(:day_method => :start_time) do |day, entries| %>
-            <% # here the day_methods needs to accept day_of_week=Monday instead of date per se - how?!?! %>
               <%= day.day %>
               <% entries.each do |entry| %>
                 <% if entry.event_id>0 %>

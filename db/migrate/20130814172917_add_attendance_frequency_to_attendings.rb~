@@ -1,0 +1,4 @@
+class AddAttendanceFrequencyToAttendings < ActiveRecord::Migration
+  def change
+  end
+end

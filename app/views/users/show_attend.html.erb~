@@ -29,7 +29,7 @@
               <%= day.day %>
               <% entries.each do |entry| %>
                 <% if entry.event_id>0 %>
-                  <%= link_to(h(Event.find()), Event.find(entry.event_id)) if entry.event_id>0 %>
+                  <%= link_to(h(Event.find(entry.event_id).name), Event.find(entry.event_id)) if entry.event_id>0 %>
                 <% else %>
                   <%= entry.name %>
                 <% end %>

@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130814094312) do
+ActiveRecord::Schema.define(version: 20130814172917) do
 
   create_table "attendings", force: true do |t|
     t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "repeated",   default: false
   end
 
   add_index "attendings", ["event_id"], name: "index_attendings_on_event_id"

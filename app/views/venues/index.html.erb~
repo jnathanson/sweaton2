@@ -24,3 +24,4 @@
 
 <%= will_paginate %>
 
+<%= image_tag("manatee.png", alt: "Manatee") %>
