@@ -69,7 +69,7 @@ namespace :db do
     end
 
     users = User.all
-    users.each { |user| user.diary_entries.create!(name: "Supervisor meeting", start_time: 3.days.from_now.advance(days: rand(-3..10)), repeating: false) }
+    users.each { |user| wuser.diary_entries.create!(name: "Supervisor meeting", start_time: 3.days.from_now.advance(days: rand(-3..10)), repeating: false) }
 
   end
 end

@@ -2,19 +2,17 @@
 <% if @number==nil
      str = ""
    else
-     str = "at"+Venue.find(@number).name
+     str = "at "+Venue.find(@number).name
    end %>
 <h1>All events <% str %></h1>
 
-<% if @events.any? %>
+<%= render 'shared/search' %>
 
-  <%= will_paginate %>
+<% if @events.any? %>
 
   <ul class="events">
     <%= render @events, size: 52 %>
   </ul>
-
-  <%= will_paginate %>
 
 <% else %>
 

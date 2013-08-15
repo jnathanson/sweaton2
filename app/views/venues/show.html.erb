@@ -1,4 +1,6 @@
 <% provide(:title, @venue.name) %>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <div class="row">
   <aside class="span4">
     <section>
@@ -21,10 +23,16 @@
     </section>
   </aside>
   <div class="span8">
-    <section>
       <% if signed_in? && (current_user.admin? || (current_user.organiser? && @venue.user_id == current_user.id)) %>
-        <%= "Link to toggle view to create new event here" %>
-        <%= render 'events/new_event' %>
+<script>
+$( "button" ).click(function() {
+  $( "toggle_form" ).toggle( "fold", 1000 );
+});
+</script>
+        <button>toggle the div</button>
+        <div class="toggle_form">
+          <%= render 'events/new_event' %>
+        </div>
       <% end %>
     </section>
     <section>

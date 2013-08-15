@@ -9,6 +9,7 @@
   <%= f.label :description %>
   <%= f.text_area :description %>
 
+  <%= f.label :start_time, "Date" %>
   <%= f.text_field :start_time %>
   <%= f.label :start_time # Needs to automatically start....when?
                               %>
@@ -17,6 +18,8 @@
   <%= f.label :end_time # Automatically starts... 30mins after start_time? Even when changed?
                            %>
   <%= f.time_select :end_time %>
+
+  <% #Okay here you might want a toggle to view to add extra info eg cost, gender - but not essential so not always visible %>
 
   <%= f.submit "Create event", class: "btn btn-large btn-primary" %>
 

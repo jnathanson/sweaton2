@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130814172917) do
+ActiveRecord::Schema.define(version: 20130815153722) do
 
   create_table "attendings", force: true do |t|
     t.integer  "user_id"
@@ -77,6 +77,16 @@ ActiveRecord::Schema.define(version: 20130814172917) do
   add_index "relationships", ["event_id"], name: "index_relationships_on_event_id"
   add_index "relationships", ["tag_id", "event_id"], name: "index_relationships_on_tag_id_and_event_id", unique: true
   add_index "relationships", ["tag_id"], name: "index_relationships_on_tag_id"
+
+  create_table "reviews", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.integer  "venue_id"
+    t.string   "content"
+    t.integer  "stars"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tags", force: true do |t|
     t.string   "name"

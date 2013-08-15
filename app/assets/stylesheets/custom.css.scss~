@@ -52,8 +52,8 @@ textarea {
   height: 400px;
 }
 
- #map label { width: auto; display:inline; }
- #map img { max-width: none; }
+#map label { width: auto; display:inline; }
+#map img { max-width: none; }
 
 top_container {
   float: top;
@@ -216,10 +216,17 @@ aside {
 }
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input, textarea, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
+  /*width: 100%;*/
   padding: 10px;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+select {
+  border: 1px solid #bbb;
+  padding: 1px;
   margin-bottom: 15px;
   @include box_sizing;
 }

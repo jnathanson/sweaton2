@@ -5,8 +5,10 @@ class EventsController < ApplicationController
 
   def index
     if params[:venue_id]==nil
+      @search = Event.search(params[:q])
       # Indexing from search so show all events
-      @events = Event.paginate(page: params[:page])
+      @events = @search.result
+      @search.build_condition if @search.conditions.empty?
     else # Indexing via venue so only show that venue's events
       @events = Venue.find(params[:venue_id]).events.paginate(page: params[:page])
       @number = Venue.find(params[:venue_id]).id
@@ -30,7 +32,7 @@ class EventsController < ApplicationController
       redirect_to @event
     else
       flash[:error] = "Nope nope nope nope nope"
-      redirect_to @event.venue
+      render 'static_pages/home'
     end
   end
 

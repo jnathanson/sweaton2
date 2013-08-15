@@ -6,15 +6,13 @@
    end %>
 <h1>All events <% str %></h1>
 
-<% if @events.any? %>
+<%= render 'search' %>
 
-  <%= will_paginate %>
+<% if @events.any? %>
 
   <ul class="events">
     <%= render @events, size: 52 %>
   </ul>
-
-  <%= will_paginate %>
 
 <% else %>
 

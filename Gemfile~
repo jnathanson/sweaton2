@@ -68,5 +68,6 @@ gem 'capistrano'
 gem 'carrierwave'
 
 # Calendar capability
+gem 'ice_cube'
 gem "watu_table_builder", :require => "table_builder"
 gem 'fullcalendar-rails'

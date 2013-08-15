@@ -5,8 +5,10 @@ class EventsController < ApplicationController
 
   def index
     if params[:venue_id]==nil
+      @search = Event.search(params[:q])
       # Indexing from search so show all events
-      @events = Event.paginate(page: params[:page])
+      @events = @search.result
+      @search.build_condition if @search.conditions.empty?
     else # Indexing via venue so only show that venue's events
       @events = Venue.find(params[:venue_id]).events.paginate(page: params[:page])
       @number = Venue.find(params[:venue_id]).id
@@ -14,7 +16,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    Event.find(params[:id]).day=rand(0..6) unless Event.find(params[:id]).day?
     @event = Event.find(params[:id])
     @tags = @event.tags.paginate(page: params[:page])
     @json = @event.venue.to_gmaps4rails do |venue, marker|
@@ -31,7 +32,7 @@ class EventsController < ApplicationController
       redirect_to @event
     else
       flash[:error] = "Nope nope nope nope nope"
-      redirect_to @event.venue
+      render 'static_pages/home'
     end
   end
 
@@ -68,7 +69,7 @@ class EventsController < ApplicationController
     end
 
     def correct_or_admin
-      current_venue = Venue.find(params[:venue_id])
+      current_venue = Venue.find(params[:event.venue_id])
       redirect_to(root_path) unless signed_in? && ((current_venue.user_id == current_user.id) || current_user.admin?)
     end
 
