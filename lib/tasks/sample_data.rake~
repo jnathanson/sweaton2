@@ -56,7 +56,7 @@ namespace :db do
     File.open("public/societies.csv").readlines.each do |line|
       CSV.parse(line) do |line|
         venue_name, event_name, day, start_t, end_t, gender, cost, contact, website, addr1, addr2, city, borough, postcode, comment, child_tag, parent_tag = line
-        if addr2?
+        if addr2.blank?
           address = addr1.to_s+", "+addr2.to_s+", "+borough.to_s+", "+city.to_s
         else
           address = addr1.to_s+", "+borough.to_s+", "+city.to_s
