@@ -87,15 +87,7 @@
     </div>
 
   <% else %>
-    <div id="top_container">
-      <%= gmaps4rails(@json) %>
-    </div>
-    <div id="bottomleft_container">
-      <p>New events go here</p>
-    </div>
-    <div id="bottomright_container">
-      <p>Tags go here</p>
-    </div>
+    <%= render 'default_home' %>
 
   <% end
      end
@@ -104,12 +96,6 @@
         <%= render 'shared/stats' %>
       </section>
 <% else %>
-  <%= gmaps4rails(@json) %>
-  <div class="center hero-unit">
-  <h1>This is Link Up</h1>
-	<p>
-	  Welcome to Link Up! We're currently undergoing maintenance, please log in to access.
-	<br>
- 	<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
-  </div>
+    <%= render 'default_home' %>
+
 <% end %>

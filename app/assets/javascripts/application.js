@@ -20,9 +20,6 @@
 
 $(function() {
   $("#event_start_time").datepicker();
-});
-
-$(function() {
   $("#tabs").tabs();
 });
 

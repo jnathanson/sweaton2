@@ -77,6 +77,7 @@ bottomright_container {
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
   line-height: 1;
 }
 
@@ -330,7 +331,7 @@ aside {
 
 #calendar td,
 #calendar th {
-  font-family: "Lucida Grande",arial,helvetica,sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 10px;
   padding: 6px;
   border: 1px solid #999;

@@ -18,14 +18,8 @@
 //= require turbolinks
 //= require_tree .
 
-$(function() {
+$(window).load(function() {
   $("#event_start_time").datepicker();
-});
-
-$(function() {
   $("#tabs").tabs();
 });
 
-$("toggle_button").click(function() {
-  $("#toggle_form").toggle("clip", 300);
-});

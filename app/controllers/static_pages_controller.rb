@@ -9,6 +9,8 @@ class StaticPagesController < ApplicationController
     if signed_in?
       @venues = current_user.venues
       @events = current_user.events
+
+      # Consolidate all your map markers into one json and plot:
       @favs = @venues.to_gmaps4rails do |venue, marker|
         marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
         marker.title "#{venue.name}"
@@ -41,9 +43,6 @@ class StaticPagesController < ApplicationController
   end
 
   def contact
-  end
-
-  def testerpages
   end
 
 end

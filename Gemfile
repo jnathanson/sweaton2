@@ -74,3 +74,6 @@ gem 'fullcalendar-rails'
 
 # Search
 gem 'ransack'
+
+# Date and time parser for event importing
+gem 'chronic'

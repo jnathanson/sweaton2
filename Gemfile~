@@ -71,3 +71,6 @@ gem 'carrierwave'
 gem 'ice_cube'
 gem "watu_table_builder", :require => "table_builder"
 gem 'fullcalendar-rails'
+
+# Search
+gem 'ransack'
