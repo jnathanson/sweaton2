@@ -11,7 +11,7 @@ class EventsController < ApplicationController
       @search.build_condition if @search.conditions.empty?
     else # Indexing via venue so only show that venue's events
       @events = Venue.find(params[:venue_id]).events.paginate(page: params[:page])
-      @number = Venue.find(params[:venue_id]).id
+      @number = params[:venue_id]
     end
   end
 
@@ -26,7 +26,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Venue.find(params[:event][:venue_id]).events.build(params[event_params])
+#    puts @event.id+", ====================== "+@event.venue_id
+    @event = Venue.find(event_params.venue_id).events.build(event_params)
     if @event.save
       flash[:success] = "Event created!"
       redirect_to @event
@@ -42,7 +43,7 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    if @event.update_attributes(params[:event])
+    if @event.update_attributes(event_params)
       flash[:success] = "Event details updated"
       redirect_to @event
     else
@@ -65,11 +66,12 @@ class EventsController < ApplicationController
   private
 
     def event_params
-      params.require(:event).permit(:name, :description, :start_time, :end_time, :tags, :venue_id)
+      params.require(:event).permit(:name, :description, :start_time, :end_time, :tags, :venue_id, :day, :contact, :website, :gender, :tags)
     end
 
+
     def correct_or_admin
-      current_venue = Venue.find(params[:event.venue_id])
+      current_venue = Venue.find(Event.find(params[:id]).venue_id)
       redirect_to(root_path) unless signed_in? && ((current_venue.user_id == current_user.id) || current_user.admin?)
     end
 

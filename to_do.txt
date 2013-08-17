@@ -1,5 +1,7 @@
 === TO DO
 
+Homepage map to show events occuring in the next DAY?? by venue obvs
+
 String search function APPEARS to do ONE search but in fact carries out THREE:
 1) events
 2) venues

@@ -22,11 +22,11 @@
     <section>
       <%= @event.description %>
       <br>
-      <%= @event.start_time.to_s(:time_day)+", "+"Tuesdays... FOR NOW" %>
+      <%= @event.start_time.to_s(:time_day)+", "+Date::DAYNAMES[@event.day.to_i].to_s+"s" %>
       <br>
       Gender: <%= @event.gender %> | Cost: <%= @event.cost %> 
       <br>
-      <%= @event.website+", contact "+@event.contact %>
+      <%= "Contact: "+@event.contact+", "+@event.website %>
     </section>
     <section>
       <% if @event.tags.any? %>

@@ -5,7 +5,7 @@ String search function APPEARS to do ONE search but in fact carries out THREE:
 2) venues
 3) news items/updates
 
-
+More specialised search function instead carries out ONE search on events with relevant attributes.
 
 Need a picture for each venue; no idea how to upload pics, but we need capability for it. Once that's done, can be adapted into extra user avatar stuff.
 --> following on from that, capability for each venue to have a gallery?
