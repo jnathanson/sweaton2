@@ -34,7 +34,7 @@ $( "button" ).click(function() {
       <% end %>
     </section>
     <section>
-      <%= gmaps4rails(@json) %>
+      <%= gmaps4rails(@json, 'auto-zoom' => false) %>
       <% content_for :scripts do %>
         <script type="text/javascript" charset="utf-8">
         Gmaps.map.callback = function() {

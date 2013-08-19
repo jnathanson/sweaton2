@@ -7,7 +7,7 @@ class VenuesController < ApplicationController
 
   def index
     @venues = Venue.paginate(page: params[:page])
-    @json = @venues.to_gmaps4rails do |venue, marker|
+    @json = Venue.all.to_gmaps4rails do |venue, marker|
     marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
     marker.title "#{venue.name}"
     marker.picture({:picture => "/assets/tag_icons/assassins.png", :width => 32, :height => 32})
@@ -23,9 +23,7 @@ class VenuesController < ApplicationController
     @events = @venue.events.paginate(page: params[:page])
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     if correct_or_admin
-      puts ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"+@venue.id.to_s+";;;;;;;;;;;;;;;;;;;;;;;;;;:"
       @event = @venue.events.build
-      puts "=========================="+@event.venue_id.to_s+"@@@@@@@@@@@@@@@@@@@@@@@@@@@"
     end
     @json = @venue.to_gmaps4rails do |venue, marker|
     marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})

@@ -6,7 +6,7 @@
    end %>
 <h1>All events <% str %></h1>
 
-<%= render 'shared/search' %>
+<%= render 'search' %>
 
 <% if @events.any? %>
 

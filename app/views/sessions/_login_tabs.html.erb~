@@ -7,18 +7,18 @@
     <li><a href="#admin"><span>admin</span></a></li>
   </ul>
   <div id="students">
-    <%= render 'login_details' %>
+    <%= render 'sessions/login_details' %>
   </div>
   <div id="organisations">
-    <%= render 'login_details' %>
+    <%= render 'sessions/login_details' %>
   </div>
   <div id="mentors">
-    <%= render 'login_details' %>
+    <%= render 'sessions/login_details' %>
   </div>
   <div id="parents">
-    <%= render 'login_details' %>
+    <%= render 'sessions/login_details' %>
   </div>
   <div id="admin">
-    <%= render 'login_details' %>
+    <%= render 'sessions/login_details' %>
   </div>
 </div>

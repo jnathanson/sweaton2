@@ -14,6 +14,7 @@ Sweaton2::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :favourites, only: [:create, :destroy]
   resources :attendings, only: [:create, :destroy]
+  resources :messages
 
   root 'static_pages#home'
   match '/signup',  to: 'users#new',		via: 'get'

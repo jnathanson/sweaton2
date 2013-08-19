@@ -35,7 +35,8 @@ gem 'sass-rails', '4.0.0'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.0'
 gem 'jquery-rails'
-gem 'turbolinks', '1.1.1'
+gem 'turbolinks'
+gem 'jquery-turbolinks'
 gem 'jbuilder', '1.0.2'
 
 group :doc do
@@ -47,7 +48,7 @@ group :production do
   gem 'rails_12factor', '0.0.2'
 end
 
-gem 'gmaps4rails'
+gem 'gmaps4rails', '>= 2.0.0.pre', git: 'https://github.com/fiedl/Google-Maps-for-Rails.git'
 gem 'geocoder'
 
 #Below gems included for similarity with sweaton and of unknown purpose?!

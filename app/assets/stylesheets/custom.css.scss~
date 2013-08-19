@@ -18,7 +18,9 @@ html {
 }
 
 body {
+  background-color: #f7931e;
   padding-top: 60px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 section {
@@ -27,6 +29,15 @@ section {
 
 textarea {
   resize: vertical;
+}
+/*
+div {
+  background-color: #fff;
+}
+*/
+.container {
+  min-height: 100px;
+  background-color: #fff
 }
 
 .center {

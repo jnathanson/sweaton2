@@ -26,13 +26,13 @@ class EventsController < ApplicationController
   end
 
   def create
-#    puts @event.id+", ====================== "+@event.venue_id
     @event = Venue.find(event_params[:venue_id]).events.build(event_params)
+    @event.day = 
     if @event.save
       flash[:success] = "Event created!"
       redirect_to @event
     else
-      flash[:error] = "Nope nope nope nope nope"
+      flash[:error] = "Couldn't create event"
       render 'static_pages/home'
     end
   end
@@ -66,7 +66,8 @@ class EventsController < ApplicationController
   private
 
     def event_params
-      params.require(:event).permit(:name, :description, :start_time, :end_time, :tags, :venue_id, :day, :contact, :website, :gender, :tags)
+      params.require(:event).permit(:name, :description, :start_time, :end_time, :tags,
+                                    :venue_id, :day, :contact, :website, :gender)
     end
 
 

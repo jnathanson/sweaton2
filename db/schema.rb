@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130815153722) do
+ActiveRecord::Schema.define(version: 20130817200952) do
 
   create_table "attendings", force: true do |t|
     t.integer  "user_id"
@@ -66,6 +66,19 @@ ActiveRecord::Schema.define(version: 20130815153722) do
   add_index "favourites", ["user_id", "venue_id"], name: "index_favourites_on_user_id_and_venue_id", unique: true
   add_index "favourites", ["user_id"], name: "index_favourites_on_user_id"
   add_index "favourites", ["venue_id"], name: "index_favourites_on_venue_id"
+
+  create_table "messages", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.string   "subject"
+    t.string   "message"
+    t.boolean  "unread",      default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["receiver_id"], name: "index_messages_on_receiver_id"
+  add_index "messages", ["sender_id"], name: "index_messages_on_sender_id"
 
   create_table "relationships", force: true do |t|
     t.integer  "tag_id"

@@ -1,0 +1,30 @@
+<div id="tabs">
+  <ul>
+    <li><a href="#inbox"><span>Inbox</span></a></li>
+    <li><a href="#sent"><span>Sent</span></a></li>
+  </ul>
+  <p><%= link_to "New message", new_message_path %></p>
+  <!-- New message should appear in entire new page - not simply at the bottom of inbox. -->
+  <div id="inbox">
+    <% if @received_messages.any? %>
+      <ul class="events">
+        <%= render @received_messages %>
+      </ul>
+      <%= will_paginate %>
+    <% else %>
+      <p>No messages.</p>
+    <% end %>
+  </div>
+
+  <div id="sent">
+    <% if @sent_messages.any? %>
+      <ul class="events">
+        <%= render @sent_messages %>
+      </ul>
+      <%= will_paginate %>
+    <% else %>
+      <p>No messages.</p>
+    <% end %>
+  </div>
+
+</div>

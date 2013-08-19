@@ -13,12 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
+//= require turbolinks
+//= require jquery.turbolinks
 //= require bootstrap
 //= require fullcalendar
-//= require turbolinks
 //= require_tree .
 
-$(window).load(function() {
+$(function() {
   $("#event_start_time").datepicker();
   $("#tabs").tabs();
 });

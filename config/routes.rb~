@@ -7,7 +7,9 @@ Sweaton2::Application.routes.draw do
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :venues
-  resources :events
+  resources :events do
+    collection { post :search, to: 'events#index' }
+  end
   resources :tags, only: [:index, :show]
   resources :relationships, only: [:create, :destroy]
   resources :favourites, only: [:create, :destroy]

@@ -1,15 +1,16 @@
 <footer class="footer">
   <small>
     © Link Up 2013. Designed by Josh Nathanson, built by Sarah Binney.
-
+  </small>
   <nav>
     <ul>
+      <small>
       <li><%= link_to "About",   about_path %></li>
       <li><%= link_to "Contact", contact_path %></li>
       <li><a href="http://bbc.co.uk/news/">News</a></li>
       <li><%= link_to "Something else", '#' %></li>
+      </small>
     </ul>
   </nav>
-  </small>
-  <%= yield :scripts %>
+
 </footer>

@@ -18,6 +18,7 @@ html {
 }
 
 body {
+  background-color: #f7931e;
   padding-top: 60px;
   font-family: 'Open Sans', sans-serif;
 }
@@ -28,6 +29,14 @@ section {
 
 textarea {
   resize: vertical;
+}
+/*
+div {
+  background-color: #fff;
+}
+*/
+.container {
+  background-color: #fff
 }
 
 .center {
