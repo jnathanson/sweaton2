@@ -4,10 +4,10 @@ class EventsController < ApplicationController
   before_action :correct_or_admin,  only: [:edit, :update, :destroy]
 
   def index
-    if params[:venue_id]==nil
+    unless params[:venue_id]
       @search = Event.search(params[:q])
       # Indexing from search so show all events
-      @events = @search.result
+      @events = @search.result.paginate(:page => params[:page])
       @search.build_condition if @search.conditions.empty?
     else # Indexing via venue so only show that venue's events
       @events = Venue.find(params[:venue_id]).events.paginate(page: params[:page])
@@ -19,9 +19,9 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @tags = @event.tags.paginate(page: params[:page])
     @json = @event.venue.to_gmaps4rails do |venue, marker|
-    marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => @event})
-    marker.title "#{venue.name}"
-    marker.picture({:picture => "/assets/tag_icons/assassins.png", :width => 32, :height => 32})
+      marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => @event})
+      marker.title "#{venue.name}"
+      marker.picture({:picture => "/assets/tag_icons/assassins.png", :width => 32, :height => 32})
     end
   end
 

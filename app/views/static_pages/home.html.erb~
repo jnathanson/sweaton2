@@ -96,6 +96,6 @@
         <%= render 'shared/stats' %>
       </section>
 <% else %>
-    <%= render 'default_home' %>ink_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+    <%= render 'default_home' %>
 
 <% end %>

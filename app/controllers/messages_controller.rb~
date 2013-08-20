@@ -1,28 +1,45 @@
 class MessagesController < ApplicationController
+  before_action :correct_or_admin, only: [:show, :destroy] # Is that really it?!
+
+  def new
+    @message = current_user.messages.build
+  end
 
   def create
     @message = current_user.messages.build(message_params)
+    @message.unread = true
     if @message.save
       flash[:success] = "Message sent."
-      redirect_to inbox_messages_path
+      redirect_to inbox_path
     else
-      render 'static_pages/home'
+      render 'new'
     end
   end
 
+  def show
+    @message = Message.find(params[:id])
+  end
+
   def inbox
-    @received_messages = Message.find_by(receiver_id: current_user.id).paginate(params[:page])
-    @sent_messages = Message.find_by(sender_id: current_user.id).paginate(params[:page])
-    @message = Message.find(params[:id]
+    @received_messages = Message.where(:receiver_id => current_user.id).order("created_at").paginate(:page => params[:page])
+    @sent_messages = Message.where(:sender_id => current_user.id).order("created_at")paginate(:page => params[:page])
+    @message = Message.find_by(sender_id: 1)
   end
 
   def destroy
+    @message.destroy
+    redirect_to inbox_path
   end
 
   private
 
     def message_params
-      params.require(:message).permit(:content, :receiver_id)
+      params.require(:message).permit(:message, :receiver_id, :subject, :sender_id)
+    end
+
+    def correct_or_admin
+      @message = Message.find(params[:id])
+      redirect_to(root_path) unless signed_in? && (current_user.admin? || (@message.sender_id == current_user.id) || (@message.receiver_id == current_user.id))
     end
 
 end

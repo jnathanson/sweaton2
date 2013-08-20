@@ -30,11 +30,7 @@ section {
 textarea {
   resize: vertical;
 }
-/*
-div {
-  background-color: #fff;
-}
-*/
+
 .container {
   background-color: #fff
 }
@@ -129,6 +125,11 @@ p {
     color: white;
     text-decoration: none;
   }
+}
+
+.major-nav-btn {
+  display: inline;
+  list-style-type: none;
 }
 
 /* footer */

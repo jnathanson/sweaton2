@@ -1,3 +1,5 @@
 <h1><%= event.name %></h1>
-<h2><%= event.venue.name %></h2>
-<p><%= event.venue.gmaps4rails_address %></p>
+<p>at <%= event.venue.name %></p>
+<p><%= event.start_time.to_s(:time_day) %>-<%= event.end_time.to_s(:time_day) %>
+<p><%= event.description %></p>
+<%= link_to "JOIN ACTIVITY", '#' %>

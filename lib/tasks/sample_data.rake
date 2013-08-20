@@ -68,5 +68,11 @@ namespace :db do
     users = User.all
     users.each { |user| user.diary_entries.create!(name: "Supervisor meeting", start_time: 3.days.from_now.advance(days: rand(-3..10)), repeating: false) }
 
+    users.each do |sender|
+      (1..15).each do |recipient|
+        sender.messages.create!(receiver_id: recipient, subject: "Hey there "+User.find(recipient).name+"!", message: Faker::Lorem.sentence(6))
+      end
+    end
+
   end
 end

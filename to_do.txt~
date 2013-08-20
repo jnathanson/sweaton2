@@ -1,5 +1,12 @@
 === TO DO
 
+CSS: OKAY so it needs to be less repetitive! 
+    1) integrate generated_css_with_orange into custom.css
+    2) - OR split up the entire file, up to you
+    3) Make ALL button css like the generated_... file. THEN create extra for the major buttons, plus minor buttons like Sign In or Sign Up (differ from major ones in size and border-radius=4 not 0)
+
+Homepage map to show events occuring in the next DAY?? by venue obvs
+
 String search function APPEARS to do ONE search but in fact carries out THREE:
 1) events
 2) venues
@@ -42,6 +49,8 @@ When you click on tags,
 
 Venue homepage: map (aside? maybe makes more sense to scroll down)
         event calendar
+
+Custom pagination (details at http://thewebfellas.com/blog/2010/8/22/revisited-roll-your-own-pagination-links-with-will_paginate-and-rails-3 )
 
 ========= NOTES ON THINGS ALREADY DONE ==========
 

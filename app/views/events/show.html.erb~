@@ -2,31 +2,10 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <h1>
-        <%= gravatar_for @event %>
-        <%= @event.name %>
-      </h1>
-    </section>
-    <section>
+      <%= gravatar_for @event %>
+      <!-- Here you want the uploaded image for that event. Default = tag image large. -->
       <%= render 'events/attending_form' if signed_in? %>
-      <p><b><%= link_to @event.venue.name, @event.venue %></b>, <%= @event.venue.street_address+", "+@event.venue.postcode %></p>
-      <%= gmaps4rails(@json) %>
-    </section>
-    <section>
-      <% if signed_in? && (current_user.admin? || (current_user.organiser? && Venue.find(@event.venue_id).user_id == current_user.id)) %>
-        <%= link_to "Edit", edit_event_path(@event) %>
-      <% end %>
-    </section>
-  </aside>
-  <div class="span8">
-    <section>
-      <%= @event.description %>
-      <br>
-      <%= @event.start_time.to_s(:time_day)+", "+Date::DAYNAMES[@event.day.to_i].to_s+"s" %>
-      <br>
-      Gender: <%= @event.gender %> | Cost: <%= @event.cost %> 
-      <br>
-      <%= "Contact: "+@event.contact+", "+@event.website %>
+      <%= render 'reviews/new' if signed_in? %>
     </section>
     <section>
       <% if @event.tags.any? %>
@@ -36,6 +15,47 @@
         </ol>
         <%= will_paginate @tags %>
       <% end %>
+    </section>
+
+  </aside>
+  <div class="span8">
+    <h1><%= @event.name %></h1> 
+      <% if signed_in? && (current_user.admin? || (current_user.organiser? && Venue.find(@event.venue_id).user_id == current_user.id)) %>
+        <%= link_to "Edit", edit_event_path(@event) %>
+      <% end %>
+    <section>
+      <table-border="1">
+      <tr>
+        <td><b>Time:</b></td>
+        <td><%= @event.day %></td> <!-- this'll only return one int! has to be multiple days -->
+      </tr>
+      <tr>
+        <td><b>Cost:</b></td>
+        <td><%= @event.cost %></td>
+      </tr>
+      <tr>
+        <td><b>Gender:</b></td>
+        <td><%= @event.gender %></td>
+      </tr>
+      <tr>
+        <td><b>Contact:</b></td>
+        <td><%= @event.contact %></td>
+      </tr>
+      <tr>
+        <td><b>Website:</b></td>
+        <td><%= link_to @event.website, @event.website %></td>
+      </tr>
+    </section>
+    <section>
+      <%= @event.description %>
+    </section>
+    <section>
+      <p><b><%= link_to @event.venue.name, @event.venue %></b>, <%= @event.venue.street_address+", "+@event.venue.postcode %></p>
+      <%= gmaps4rails(@json) %>
+    </section>
+    <section>
+      <h3>Reviews:</h3>
+        <!-- if @event.reviews.any? render @event.reviews -->
     </section>
   </div>
 </div>

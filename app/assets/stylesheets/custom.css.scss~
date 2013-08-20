@@ -36,7 +36,6 @@ div {
 }
 */
 .container {
-  min-height: 100px;
   background-color: #fff
 }
 

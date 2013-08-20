@@ -1,11 +1,12 @@
+<% message.unread = false %><!-- If you're seeing this page you've viewed it! -->
 <table border="1">
 <tr>
 <td>From</td>
-<td><%= User.find(message.sender_id).name %></td>
+<td><%= link_to User.find(message.sender_id).name, User.find(message.sender_id) %></td>
 </tr>
 <tr>
 <td>To</td>
-<td><%= User.find(message.receiver_id).name %></td>
+<td><%= link_to User.find(message.receiver_id).name, User.find(message.receiver_id) %></td>
 </tr>
 <tr>
 <td>Subject</td>
@@ -13,7 +14,7 @@
 </tr>
 <tr>
 <td>Date</td>
-<td><%= message.created_at.to_s(:short_day) %></td>
+<td><%= message.created_at.to_s %></td>
 </tr>
 <tr>
 <td> </td>
@@ -29,7 +30,7 @@
 </tr>
 <tr>
 <td>Reply</td>
-<td><%= render 'new' %></td>
+<td><%= "render new here" %></td>
 </tr>
 
 </table>

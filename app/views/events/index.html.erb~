@@ -14,6 +14,8 @@
     <%= render @events, size: 52 %>
   </ul>
 
+  <%= will_paginate %>
+
 <% else %>
 
   <p>No events listed for this venue.</p>

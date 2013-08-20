@@ -1,4 +1,4 @@
-<% message.unread = false %><!-- If you're seeing this page you've viewed it! -->
+<% message.unread = false %>
 <table border="1">
 <tr>
 <td>From</td>

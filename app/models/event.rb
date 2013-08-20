@@ -21,6 +21,14 @@ class Event < ActiveRecord::Base
     "#{venue.gmaps4rails_address}"
   end
 
+  def self.simple_search(search)
+    if search
+      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
+
   def tagged?(property)
     relationships.find_by(tag_id: property.id)
   end

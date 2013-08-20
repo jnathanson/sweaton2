@@ -7,10 +7,22 @@
   <!-- New message should appear in entire new page - not simply at the bottom of inbox. -->
   <div id="inbox">
     <% if @received_messages.any? %>
-      <ul class="events">
-        <%= render @received_messages %>
-      </ul>
-      <%= will_paginate %>
+      <div class="message_table">
+        <col span="2" style="font-size:25px;"/>
+        <%= table_for(@received_messages) do |t| %>
+          <%= t.body do |message| %>
+            <%= t.r do %>
+              <%= t.d(h(message.created_at.to_s(:day_week_month))) %>
+              <%= t.d(h(User.find(message.sender_id).name)) %>
+              <%= t.d(h(message.subject)) %>
+              <%= t.d(h(link_to 'VIEW', message, method: :show)) %>
+              <%= t.d(h(link_to "DELETE", message, method: :delete, data: { confirm: "You sure?" } )) %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+ <%= page_entries_info @received_messages %>
+      <%= will_paginate @received_messages, :page_links => false %>
     <% else %>
       <p>No messages.</p>
     <% end %>
@@ -18,13 +30,25 @@
 
   <div id="sent">
     <% if @sent_messages.any? %>
-      <ul class="events">
-        <%= render @sent_messages %>
-      </ul>
-      <%= will_paginate %>
+      <div class="message_table">
+      <%= table_for(@sent_messages) do |t| %>
+        <%= t.body do |message| %>
+          <%= t.r do %>
+            <%= t.d(h(message.created_at.to_s(:day_week_month))) %>
+            <%= t.d(h(User.find(message.sender_id).name)) %>
+            <%= t.d(h(message.subject)) %>
+            <%= t.d(h(link_to 'VIEW', '#')) %>
+            <%= t.d(h(link_to "DELETE", message, method: :delete, data: { confirm: "You sure?" } )) %>
+          <% end %>
+        <% end %>
+      <% end %>
+      </div>
+      <%= will_paginate @sent_messages, :page_links => false %>
     <% else %>
       <p>No messages.</p>
     <% end %>
   </div>
-
+</div>
+<div class="message">
+  <%= render @message %>
 </div>
