@@ -6,6 +6,3 @@ $( function() {
   });
 });
 
-//jQuery.ajaxSetUp({
-//        'beforeSend': function (xhr) {xhr.setRequestHeader('Accept', 'text/javascript')}
-//});

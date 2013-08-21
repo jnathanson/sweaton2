@@ -4,7 +4,6 @@
     <li><a href="#sent"><span>Sent</span></a></li>
   </ul>
   <p><%= link_to "New message", new_message_path %></p>
-  <!-- New message should appear in entire new page - not simply at the bottom of inbox. -->
   <div id="inbox">
     <div id="top_page">
       <%= render 'received' %>
@@ -18,6 +17,6 @@
   </div>
 </div>
 
-<div class="message">
+<div class="preview">
   <%= render @message %>
 </div>

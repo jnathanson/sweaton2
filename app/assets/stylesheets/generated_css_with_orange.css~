@@ -5,7 +5,7 @@
  -moz-border-radius: 0px;
  border-radius: 0px;
  text-align:center;
- width:300px;
+ width:150px;
  height:41px;
  padding-top:undefinedpx;
  padding-bottom:undefinedpx;
@@ -42,9 +42,9 @@
  display:inline-block;
  }.DeactiveButton:hover{
  background:#ffc319;
- -webkit-box-shadow: 0px 4px 0px 0px #9c5c14;
- -moz-box-shadow:0px 4px 0px 0px #9c5c14;
- box-shadow:0px 4px 0px 0px #9c5c14;
+ -webkit-box-shadow: 0px 4px 0px 0px #D18B19;
+ -moz-box-shadow:0px 4px 0px 0px #D18B19;
+ box-shadow:0px 4px 0px 0px #D18B19;
  }
 
 .message_table {

@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :correct_or_admin, only: [:show, :destroy] # Is that really it?!
+  before_action :correct_or_admin, only: [:show, :destroy, :inbox] # Is that really it?!
 
   def new
     @message = current_user.messages.build
@@ -23,8 +23,7 @@ class MessagesController < ApplicationController
   def inbox
     @received_messages = Message.where(:receiver_id => current_user.id).paginate(:order => "created_at DESC", :page => params[:recd_page])
     @sent_messages = Message.where(:sender_id => current_user.id).order("created_at ASC").paginate(:page => params[:sent_page])
-    @message = Message.find_by(sender_id: 1)
-    
+    @message = params[:id] ? Message.find(params[:id]) : @received_messages[0]
   end
 
   def destroy
@@ -39,8 +38,8 @@ class MessagesController < ApplicationController
     end
 
     def correct_or_admin
-      @message = Message.find(params[:id])
-      redirect_to(root_path) unless signed_in? && (current_user.admin? || (@message.sender_id == current_user.id) || (@message.receiver_id == current_user.id))
+      @message = params[:id] ? Message.find(params[:id]) : nil
+      redirect_to(root_path) unless signed_in? && (current_user.admin? || @message.nil? || (@message.sender_id == current_user.id) || (@message.receiver_id == current_user.id))
     end
 
 end
