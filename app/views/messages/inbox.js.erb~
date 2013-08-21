@@ -1,0 +1,4 @@
+$("#top_page").html("<%= escape_javascript(render("received")) %>");
+
+$("#bottom_page").html("<%= escape_javascript(render("sent")) %>");
+

@@ -21,9 +21,10 @@ class MessagesController < ApplicationController
   end
 
   def inbox
-    @received_messages = Message.where(:receiver_id => current_user.id).order("created_at").paginate(:page => params[:page])
-    @sent_messages = Message.where(:sender_id => current_user.id).order("created_at").paginate(:page => params[:page])
+    @received_messages = Message.where(:receiver_id => current_user.id).paginate(:order => "created_at DESC", :page => params[:recd_page])
+    @sent_messages = Message.where(:sender_id => current_user.id).order("created_at ASC").paginate(:page => params[:sent_page])
     @message = Message.find_by(sender_id: 1)
+    
   end
 
   def destroy

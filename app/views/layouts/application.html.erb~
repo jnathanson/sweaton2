@@ -4,14 +4,15 @@
     <title><%= full_title(yield(:title)) %> </title>
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_link_tag 'jquery' %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
     <%= favicon_link_tag %>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <%= render 'layouts/header' %>
     <div class="container">
+    <%= render 'layouts/header' %>
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
