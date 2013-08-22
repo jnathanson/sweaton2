@@ -1,0 +1,1 @@
+$("charizard").toggle("fold", 1000);

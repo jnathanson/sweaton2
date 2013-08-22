@@ -11,19 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130817200952) do
-
-  create_table "attendings", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "repeated",   default: false
-  end
-
-  add_index "attendings", ["event_id"], name: "index_attendings_on_event_id"
-  add_index "attendings", ["user_id", "event_id"], name: "index_attendings_on_user_id_and_event_id", unique: true
-  add_index "attendings", ["user_id"], name: "index_attendings_on_user_id"
+ActiveRecord::Schema.define(version: 20130822205613) do
 
   create_table "diary_entries", force: true do |t|
     t.integer  "user_id"
@@ -58,14 +46,14 @@ ActiveRecord::Schema.define(version: 20130817200952) do
 
   create_table "favourites", force: true do |t|
     t.integer  "user_id"
-    t.integer  "venue_id"
+    t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "favourites", ["user_id", "venue_id"], name: "index_favourites_on_user_id_and_venue_id", unique: true
+  add_index "favourites", ["event_id"], name: "index_favourites_on_event_id"
+  add_index "favourites", ["user_id", "event_id"], name: "index_favourites_on_user_id_and_event_id", unique: true
   add_index "favourites", ["user_id"], name: "index_favourites_on_user_id"
-  add_index "favourites", ["venue_id"], name: "index_favourites_on_venue_id"
 
   create_table "messages", force: true do |t|
     t.integer  "sender_id"
@@ -140,6 +128,7 @@ ActiveRecord::Schema.define(version: 20130817200952) do
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps",          default: true
+    t.string   "contact"
   end
 
   add_index "venues", ["name"], name: "index_venues_on_name"

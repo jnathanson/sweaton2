@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
 
   belongs_to :venue
   has_many :tags, through: :relationships
-  has_many :attendings, dependent: :destroy
+  has_many :favourites, dependent: :destroy
   has_many :relationships, dependent: :destroy
 
   default_scope -> { order('start_time ASC') }

@@ -1,18 +1,11 @@
 <% provide(:title, @venue.name) %>
 <div class="row">
   <aside class="span4">
+    <div id="centre-pic">
+      <%= image_tag 'generic_sports_centre.jpg', alt: "venue image", class: "image" %><!-- Temporary - eventually hold a full-size image -->
+    </div>
     <section>
-      <h1>
-        <%= gravatar_for @venue %>
-        <%= @venue.name %>
-      </h1>
-    </section>
-    <section>
-      <%= render 'venues/favourite_form' if signed_in? %>
-      <p><%= @venue.street_address+", "+@venue.postcode %></p>
-    </section>
-    <section>
-      <%= @venue.description %>
+        <%= gmaps4rails(@json) %>
     </section>
     <section>
       <% if signed_in? && (current_user.admin? || (current_user.organiser? && @venue.user_id == current_user.id)) %>
@@ -21,53 +14,20 @@
     </section>
   </aside>
   <div class="span8">
-      <% if signed_in? && (current_user.admin? || (current_user.organiser? && @venue.user_id == current_user.id)) %>
-<script>
-$( "button" ).click(function() {
-  $( "toggle_form" ).toggle( "fold", 1000 );
-});
-</script>
-        <button>toggle the div</button>
-        <div class="toggle_form">
-          <%= render 'events/new_event' %>
-        </div>
-      <% end %>
-    </section>
-    <section>
-      <%= gmaps("markers" => {"data" => @json, "options" => {"auto_zoom" => false} }) %>
-      <% content_for :scripts do %>
-        <script type="text/javascript" charset="utf-8">
-        Gmaps.map.callback = function() {
-          if (Gmaps.map.markers.length == 1) {
-            //only one marker, choose the zoom level you expect
-            setTimeout(function() { Gmaps.map.serviceObject.setZoom(15);}, 50);
-          }
-          else{
-           //more than one marker, let's auto_zoom
-           Gmaps.map.map_options.auto_zoom = true;
-           Gmaps.map.adjustMapToBounds();
-          }
-        }
-      </script>
-      <% end %>
-      <% if @venue.events.any? %>
-        <h3>Events at this venue (<%= @venue.events.count %>)</h3>
-        <div id="calendar">
-          <%= calendar_for(@events, :year => @date.year, :month => @date.month) do |t| %>
-            <%= t.head('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') %>
-            <%= t.day(:day_method => :start_time) do |day, events| %>
-              <%= day.day %>
-              <% events.each do |event| %>
-                <%= link_to h(event.name), event %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
-        <ol class="events">
-          <%= render @events %>
-        </ol>
-        <%= will_paginate @events %>
-      <% end %>
-    </section>
+    <h1><%= @venue.name %></h1>
+    <div class="venue-info">
+      <b>Location:</b><br>
+      <%= @venue.gmaps4rails_address %><br>
+      <b>Contact:</b><br>
+      <%= @venue.contact %><br>
+    </div>
+    <div id="activity-list">
+      <b>Activities held here:</b>
+      <%= render "activities_list" %>
+    </div>
+    <div id="description">
+      <b>Description:</b>
+      <p><%= @venue.description %></p>
+    </div>
   </div>
 </div>

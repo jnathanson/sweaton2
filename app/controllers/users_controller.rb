@@ -9,8 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @favourites = @user.venues.paginate(page: params[:page])
-    @attendings = @user.events.paginate(page: params[:page]) # How to display these...
+    @favourites = @user.events.paginate(page: params[:page]) # How to display these...
   end
 
   def new
@@ -50,24 +49,12 @@ class UsersController < ApplicationController
   end
 
   def favourites
-    @title = "Favourites"
-    @user = User.find(params[:id])
-    @venues = @user.venues.paginate(page: params[:page])
-    render 'show_favourite'
-  end
-
-  def attendings
     @title = "Your events"
     @user = User.find(params[:id])
     @events = @user.events
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
-    @json = @events.to_gmaps4rails do |event, marker|
-      marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event })
-      marker.title "#{event.name}"
-      marker.picture({:picture => "/assets/tag_icons/drinking society.png", :width => 32, :height => 32})
-    end
     @entries = @user.diary_entries
-    render 'show_attend'
+    render 'show_favourite'
   end
 
   private

@@ -1,11 +1,10 @@
 class User < ActiveRecord::Base
-  has_many :venues, through: :favourites
-  has_many :events, through: :attendings
+  has_many :events, through: :favourites
   has_many :diary_entries # oh them lovely plurals
   has_many :messages, foreign_key: "receiver_id", dependent: :destroy
   has_many :messages, foreign_key: "sender_id", dependent: :destroy
   has_many :favourites, dependent: :destroy
-  has_many :attendings, dependent: :destroy
+  has_many :favourites, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
   before_save { self.email = email.downcase }
@@ -43,28 +42,16 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
-  def is_favourite?(place)
-    favourites.find_by(venue_id: place.id)
+  def is_favourite?(event)
+    favourites.find_by(event_id: event.id)
   end
 
-  def enfavourite!(place)
-    favourites.create!(venue_id: place.id)
+  def favourite!(event)
+    favourites.create!(event_id: event.id)
   end
 
-  def unfavourite!(place)
-    favourites.find_by(venue_id: place.id).destroy
-  end
-
-  def is_attending?(party)
-    attendings.find_by(event_id: party.id)
-  end
-
-  def attend!(party)
-    attendings.create!(event_id: party.id)
-  end
-
-  def unattend!(party)
-    attendings.find_by(event_id: party.id).destroy
+  def unfavourite!(event)
+    favourites.find_by(event_id: event.id).destroy
   end
 
   private

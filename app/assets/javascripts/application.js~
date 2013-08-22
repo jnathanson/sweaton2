@@ -10,11 +10,11 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require turbolinks
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.ui.all
-//= require turbolinks
-//= require jquery.turbolinks
 //= require bootstrap
 //= require fullcalendar
 //= require_tree .
@@ -22,5 +22,10 @@
 $(function() {
   $("#event_start_time").datepicker();
   $("#tabs").tabs();
+  $(".neweventform").toggle();
+  $("#charmander").click(function() {
+    $( ".neweventform" ).slideToggle("slow" );
+  });
 });
+
 

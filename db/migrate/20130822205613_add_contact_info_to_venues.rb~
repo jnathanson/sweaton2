@@ -1,0 +1,4 @@
+class AddContactInfoToVenues < ActiveRecord::Migration
+  def change
+  end
+end

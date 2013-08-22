@@ -13,9 +13,9 @@
  font-family:'Open Sans', sans-serif;
  color:#ffff00;
  background:#f7931e;
- -webkit-box-shadow: 0px 4px 0px 0px #9c5c14;
- -moz-box-shadow:0px 4px 0px 0px #9c5c14;
- box-shadow:0px 4px 0px 0px #9c5c14;
+ -webkit-box-shadow: 0px 4px 0px 0px #D18B19;
+ -moz-box-shadow:0px 4px 0px 0px #D18B19;
+ box-shadow:0px 4px 0px 0px #D18B19;
  display:inline-block;
  }.ActiveButton:hover{
  background:#ffc319;
@@ -47,11 +47,11 @@
  box-shadow:0px 4px 0px 0px #D18B19;
  }
 
-.message_table {
+.tab_table {
 	margin:0px;padding:0px;
-	width:100%;
-	border:1px solid #cccccc;
-	
+	width:90%;
+	border-top: 1px solid #a7a7a7;
+    border-bottom: 1px solid #a7a7a7;
 	-moz-border-radius-bottomleft:0px;
 	-webkit-border-bottom-left-radius:0px;
 	border-bottom-left-radius:0px;
@@ -67,39 +67,40 @@
 	-moz-border-radius-topleft:0px;
 	-webkit-border-top-left-radius:0px;
 	border-top-left-radius:0px;
-}.message_table table{
+}.tab_table table{
 	width:100%;
 	height:100%;
 	margin:0px;padding:0px;
-}.message_table tr:last-child td:last-child {
+}.tab_table tr:last-child td:last-child {
 	-moz-border-radius-bottomright:0px;
 	-webkit-border-bottom-right-radius:0px;
 	border-bottom-right-radius:0px;
 }
-.message_table table tr:first-child td:first-child {
+.tab_table table tr:first-child td:first-child {
 	-moz-border-radius-topleft:0px;
 	-webkit-border-top-left-radius:0px;
 	border-top-left-radius:0px;
 }
-.message_table table tr:first-child td:last-child {
+.tab_table table tr:first-child td:last-child {
 	-moz-border-radius-topright:0px;
 	-webkit-border-top-right-radius:0px;
 	border-top-right-radius:0px;
-}.message_table tr:last-child td:first-child{
+}.tab_table tr:last-child td:first-child{
 	-moz-border-radius-bottomleft:0px;
 	-webkit-border-bottom-left-radius:0px;
 	border-bottom-left-radius:0px;
-}.message_table tr:hover td{
+}.tab_table tr:hover td{
 	background-color:#ffffff;
 		
 
 }
-.message_table td{
+.tab_table td{
 	vertical-align:middle;
 	
 	background-color:#f4f4f4;
 
-	border:1px solid #cccccc;
+	border-top: 1px solid #a7a7a7;
+    border-bottom: 1px solid #a7a7a7;
 	border-width:0px 1px 1px 0px;
 	text-align:left;
 	padding:16px;
@@ -107,11 +108,11 @@
 	font-family:'Open Sans', sans-serif;
 	font-weight:normal;
 	color:#000000;
-}.message_table tr:last-child td{
+}.tab_table tr:last-child td{
 	border-width:0px 1px 0px 0px;
-}.message_table tr td:last-child{
+}.tab_table tr td:last-child{
 	border-width:0px 0px 1px 0px;
-}.message_table tr:last-child td:last-child{
+}.tab_table tr:last-child td:last-child{
 	border-width:0px 0px 0px 0px;
 }
 

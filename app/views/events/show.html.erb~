@@ -45,6 +45,7 @@
         <td><b>Website:</b></td>
         <td><%= link_to @event.website, @event.website %></td>
       </tr>
+    </table>
     </section>
     <section>
       <%= @event.description %>

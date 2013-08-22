@@ -10,7 +10,7 @@
   </nav>
   <div class="major-nav-btn">
     <li><%= button_to "Find Events", events_path, class: "DeactiveButton", :method => 'get' %></li>
-    <li><%= button_to "My Events", attendings_path, class: "ActiveButton", :method => 'get' %></li>
+    <li><%= button_to "My Events", favourites_user_path(current_user.id), class: "ActiveButton", :method => 'get' %></li>
     <li><%= button_to "Messages", inbox_path, class: "DeactiveButton", :method => 'get' %></li>
   </div>
 <% else %>

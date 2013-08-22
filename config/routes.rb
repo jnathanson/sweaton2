@@ -2,7 +2,7 @@ Sweaton2::Application.routes.draw do
 
   resources :users do
     member do
-      get :favourites, :attendings
+      get :favourites
     end
   end
   resources :sessions, only: [:new, :create, :destroy]
@@ -13,7 +13,6 @@ Sweaton2::Application.routes.draw do
   resources :tags, only: [:index, :show]
   resources :relationships, only: [:create, :destroy]
   resources :favourites, only: [:create, :destroy]
-  resources :attendings, only: [:create, :destroy]
   resources :messages
 
   root 'static_pages#home'

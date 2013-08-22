@@ -30,11 +30,7 @@ section {
 textarea {
   resize: vertical;
 }
-/*
-div {
-  background-color: #fff;
-}
-*/
+
 .container {
   background-color: #fff
 }
@@ -44,6 +40,15 @@ div {
   h1 {
     margin-bottom: 10px;
   }
+}
+
+.squirtle {
+  padding: 6px;
+  border:1px solid #ccc;
+  -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+  -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+  box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
+  width: 90%;
 }
 
 .map_container {
@@ -129,6 +134,11 @@ p {
     color: white;
     text-decoration: none;
   }
+}
+
+.major-nav-btn {
+  display: inline;
+  list-style-type: none;
 }
 
 /* footer */
@@ -289,6 +299,7 @@ input {
   }
 }
 
+
 /* events */
 
 .events {
@@ -314,6 +325,17 @@ aside {
   textarea {
     height: 100px;
     margin-bottom: 5px;
+  }
+}
+
+.activity-list {
+  li {
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 20px;
+    column-count: 3;
+    column-gap: 20px;
   }
 }
 
@@ -380,7 +402,7 @@ aside {
 }
 
 #calendar .today {
-  background-color: #D7F2FF;
+  background-color: #fff;
 }
 
 #calendar ul {

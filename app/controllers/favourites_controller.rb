@@ -2,19 +2,19 @@ class FavouritesController < ApplicationController
   before_action :signed_in_user
 
   def create
-    @venue = Venue.find(params[:favourite][:venue_id])
-    current_user.enfavourite!(@venue)
+    @event = Event.find(params[:favourite][:event_id])
+    current_user.favourite!(@event)
     respond_to do |format|
-      format.html { redirect_to @venue }
+      format.html { redirect_to @event }
       format.js
     end
   end
 
   def destroy
-    @venue = Favourite.find(params[:id]).venue
-    current_user.unfavourite!(@venue)
+    @event = Favourite.find(params[:id]).event
+    current_user.unfavourite!(@event)
     respond_to do |format|
-      format.html { redirect_to @venue }
+      format.html { redirect_to @event }
       format.js
     end
   end

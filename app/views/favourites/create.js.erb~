@@ -1,1 +1,1 @@
-$("#favourite_form").html("<%= escape_javascript(render('users/unfavourite')) %>")
+$("#attending_form").html("<%= escape_javascript(render('events/unattend')) %>")

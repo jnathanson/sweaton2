@@ -22,5 +22,10 @@
 $(function() {
   $("#event_start_time").datepicker();
   $("#tabs").tabs();
+  $(".neweventform").toggle();
+  $("#toggleform").click(function() {
+    $( ".neweventform" ).slideToggle("slow" );
+  });
 });
+
 

@@ -1,5 +1,5 @@
 class VenuesController < ApplicationController
-  # Anyone can see index and profile for venues, even when not logged in. And Favourite is under User.
+  # Anyone can see index and profile for venues, even when not logged in.
   before_action :organiser_account,  only: [:new, :create, :edit, :update, :destroy] # Only a certain kind of account can create venues.
   before_action :correct_user,   only: [:edit, :update, :destroy] # Only correct user or admin can edit it
 
