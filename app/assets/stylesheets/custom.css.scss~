@@ -3,6 +3,8 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
+$orange: #f7931e;
+$yellow: #ffff00;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -15,12 +17,14 @@ $grayMediumLight: #eaeaea;
 
 html {
   overflow-y: scroll;
+  height: 100%;
 }
 
 body {
-  background-color: #f7931e;
-  padding-top: 60px;
+  background-color: $orange;
+  padding-top: 0px;
   font-family: 'Open Sans', sans-serif;
+  height: 100%;
 }
 
 section {
@@ -32,6 +36,9 @@ textarea {
 }
 
 .container {
+  padding-left: 30px;
+  min-height: 100%; 
+  position: relative;
   background-color: #fff
 }
 
@@ -42,7 +49,7 @@ textarea {
   }
 }
 
-.squirtle {
+.image {
   padding: 6px;
   border:1px solid #ccc;
   -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
@@ -60,6 +67,15 @@ textarea {
   -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
   box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
   width: 90%;
+  .infowindow {
+    text-align: left;
+    background-color: $orange;
+    color: white;
+    a {
+      color: $yellow;
+      text-decoration: none
+    }
+  }
 }
 
 .gmaps4rails_map {
@@ -67,8 +83,13 @@ textarea {
   height: 400px;
 }
 
-#map label { width: auto; display:inline; }
+#map label {
+  width: auto;
+  display:inline;
+}
 #map img { max-width: none; }
+
+
 
 top_container {
   float: top;
@@ -120,19 +141,45 @@ p {
 
 /* header */
 
+.my-head {
+  padding-top: 30px;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white;
+  color: $orange;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
   line-height: 1;
   &:hover {
-    color: white;
+    color: #fff000;
     text-decoration: none;
+  }
+}
+
+.user-bar, .top-bar, .major-nav-btn li {
+  display: inline;
+  list-style-type: none;
+}
+
+.user-bar li, .top-bar li {
+  float: right;
+  padding-left: 20px;
+  a {
+
+    font-size: 15px;
+    text-decoration: none;
+    color: #888;
+  }
+}
+.top-bar li {
+  a {
+    color: #ccc;
+    font-size: 12px;
   }
 }
 
@@ -144,6 +191,7 @@ p {
 /* footer */
 
 footer {
+  float: bottom;
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;

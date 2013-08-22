@@ -1,0 +1,7 @@
+  <nav>
+    <ul class="major-nav-btn">
+      <li><%= link_to "Find Events", events_path, class: "DeactiveButton" %></li>
+      <li><%= link_to "My Events", favourites_user_path(current_user.id), class: "ActiveButton" %></li>
+      <li><%= link_to "Messages", inbox_path, class: "DeactiveButton" %></li>
+    </ul>
+  </nav>
