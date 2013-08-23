@@ -36,7 +36,8 @@ textarea {
 }
 
 .container {
-  padding-left: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
   min-height: 100%; 
   position: relative;
   background-color: #fff
@@ -83,13 +84,18 @@ textarea {
   height: 400px;
 }
 
+.login-box {
+  float: right;
+  width: 50%;
+}
+
+
+
 #map label {
   width: auto;
   display:inline;
 }
 #map img { max-width: none; }
-
-
 
 top_container {
   float: top;
@@ -217,12 +223,34 @@ footer {
 
 /* miscellaneous */
 
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
+.link-up-btn {
+  cursor:pointer;
+  border-width:0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  text-decoration: none;
+  text-align:center;
+  width:150px;
+  height:41px;
+  padding-top:undefinedpx;
+  padding-bottom:undefinedpx;
+  font-size:15px;
+  font-family:'Open Sans', sans-serif;
+  color:#ffff00;
+  background:#f7931e;
+  -webkit-box-shadow: 0px 4px 0px 0px #D18B19;
+  -moz-box-shadow:0px 4px 0px 0px #D18B19;
+  box-shadow:0px 4px 0px 0px #D18B19;
+  display:inline-block;
+}.link-up-btn:hover{
+  background:#ffc319;
+  text-decoration: none;
+  color:white;
+}
+
+.link-up-btn-secondary {
+
 }
 
 /* sidebar */
@@ -253,27 +281,6 @@ aside {
 .gravatar {
   float: left;
   margin-right: 10px;
-}
-
-.stats {
-  overflow: auto;
-  a {
-    float: left;
-    padding: 0 10px;
-    border-left: 1px solid $grayLighter;
-    color: gray;
-    &:first-child {
-      padding-left: 0;
-      border: 0;
-    }
-    &:hover {
-      text-decoration: none;
-      color: $blue;
-    }
-  }
-  strong {
-    display: block;
-  }
 }
 
 .user_avatars {

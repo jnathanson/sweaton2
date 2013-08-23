@@ -10,7 +10,7 @@ class StaticPagesController < ApplicationController
       @events = current_user.events
 
       # Consolidate all your map markers into one json and plot:
-      @atts = @events.to_gmaps4rails do |event, marker|
+      @evs = @events.to_gmaps4rails do |event, marker|
         marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event})
         marker.title "#{event.name}"
         marker.picture({:picture => "/assets/tag_icons/drinking society.png", :width => 32, :height => 32})
@@ -18,7 +18,7 @@ class StaticPagesController < ApplicationController
       @house = current_user.to_gmaps4rails do |house, marker|
         marker.picture({:picture => "/assets/tag_icons/martial arts.png", :width => 32, :height => 32})
       end
-      @json = (JSON.parse(@atts) + JSON.parse(@house)).to_json
+      @json = (JSON.parse(@evs) + JSON.parse(@house)).to_json
 
     else
       @venues = Venue.all

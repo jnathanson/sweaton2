@@ -1,99 +1,48 @@
-<!-- THIS PAGE IS A MESS EHWUT -->
-<p><i>Link Up will help you find opportunities in your local area.</i></p>
+<%= render 'shared/search' %>
 <% if signed_in? %>
+
   <% if current_user.admin? %>
-    <div class="row">
-      <aside class="span4">
-        <section>
-          <h1>
-            <%= gravatar_for current_user %>
-            <%= current_user.name %>
-          </h1>
-          <%= link_to "Account settings", edit_user_path(current_user.id) %>
-        </section>
-      </aside>
-      <div class="span8">
-        <section>
-          <h2>Listings</h2>
-          These'll need to be much more aesthetically pleasing. Mini icons on the left? Different font? How SHOULD the admin page look?!<br>
-          <%= link_to "Venues", venues_path %>
-          <br>
-          <%= link_to "Events", events_path %>
-        </section>
-        <section>
-          <h2>Toolbox</h2>
-          <%= link_to "Manage Users", users_path %>
-          <br>
-          <%= link_to "Manage Listings", events_path %>
-        </section>
-      </div>
+    <div id="local-map">
+      <%= gmaps4rails(@json) %>
+    </div>
+    <div id="diary-events">
+      <p>Events in your diary go here</p>
+    </div>
+    <div id="news">
+      <p>News feed goes here</p>
     </div>
 
-  <% else if current_user.mentor? %>
-    <div class="row">
-      <aside class="span4">
-        <section>
-          <h1>
-            <%= gravatar_for current_user %>
-            <%= current_user.name %>
-          </h1>
-          <%= link_to "Account settings", edit_user_path(current_user.id) %>
-        </section>
-      </aside>
-      <div class="span8">
-        <section>
-          <h2>Listings</h2>
-         Mentors should also be able to favourite things like students.<br>
-          <%= link_to "Venues", venues_path %>
-          <br>
-          <%= link_to "Events", events_path %>
-        </section>
-        <section>
-          <h2>Toolbox</h2>
-          Here: List of mentees with icons.
-          <%= link_to "Manage Mentees", users_path %>
-        </section>
-      </div>
-    </div>
 
-  <% else if current_user.organiser? %>
-    <div class="row">
-      <aside class="span4">
-        <section>
-          <h1>
-            <%= gravatar_for current_user %>
-            <%= current_user.name %>
-          </h1>
-          <%= link_to "Account settings", edit_user_path(current_user.id) %>
-        </section>
-        <section>
-          <%= render '/shared/toolbox' %>
-        </section>
-      </aside>
-      <div class="span8">
-        <section>
-          <h2>Listings</h2>
-          Needs to link to JUST their creations, ie Event.find_by(me)<br>
-          <%= link_to "My Venues", myvenues_path %>
-          <br>
-          <%= link_to "My Events", events_path %>
-        </section>
-        <section>
-          <h2>Toolbox</h2>
-          <%= link_to "Manage Venues", users_path %>
-          <br>
-          <%= link_to "Manage Events", events_path %>
-        </section>
-      </div>
-    </div>
+<!-- Eventually get similarly personalised homepages for organisers and mentors. -->
+
+
+
+
+
+
 
   <% else %>
-    <%= render 'default_home' %>
+    <div id="local-map">
+      <%= gmaps4rails(@json) %>
+    </div>
+    <div id="diary-events">
+      <p>Events in your diary go here</p>
+    </div>
+    <div id="news">
+      <p>News feed goes here</p>
+    </div>
+  <% end %>
 
-  <% end
-     end
-     end %>
 <% else %>
-    <%= render 'default_home' %>
+
+  <div id="local-map">
+    <%= gmaps4rails(@json) %>
+  </div>
+  <div id="popular-events">
+    <p>New events go here</p>
+  </div>
+  <div id="popular-tags">
+    <p>Tags go here</p>
+  </div>
 
 <% end %>

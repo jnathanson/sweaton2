@@ -5,10 +5,12 @@ class EventsController < ApplicationController
 
   def index
     unless params[:venue_id]
+      # Indexing from search
       @search = Event.search(params[:q])
-      # Indexing from search so show all events
-      @events = @search.result.paginate(:page => params[:page])
       @search.build_condition if @search.conditions.empty?
+      @search.sorts = 'distance_to(current_user) desc' if @search.sorts.empty?
+      @events = @search.result.paginate(:page => params[:page])
+      @json = @events.to_gmaps4rails
     else # Indexing via venue so only show that venue's events
       @events = Venue.find(params[:venue_id]).events.paginate(page: params[:page])
       @number = params[:venue_id]

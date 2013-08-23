@@ -4,7 +4,7 @@
     <li><a href="#organisations"><span>Organisations</span></a></li>
     <li><a href="#mentors"><span>Mentors</span></a></li>
     <li><a href="#parents"><span>Parents</span></a></li>
-    <li><a href="#admin"><span>admin</span></a></li>
+    <li><a href="#admin"><span>Admin</span></a></li>
   </ul>
   <div id="students">
     <%= render 'sessions/login_details' %>

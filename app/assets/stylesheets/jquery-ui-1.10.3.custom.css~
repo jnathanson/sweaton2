@@ -83,7 +83,7 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 50%;
+	width: 100%;
 	height: 100%;
 }
 .ui-accordion .ui-accordion-header {
@@ -671,7 +671,7 @@ body .ui-tooltip {
 }
 .ui-widget-content {
 	border: 1px solid #ffffff;
-	background: #e9e9e9 url(images/ui-bg_flat_100_e9e9e9_40x100.png) 50% 50% repeat-x;
+	background: #a500ed url(images/ui-bg_flat_100_e9e9e9_40x100.png) 50% 50% repeat-x;
 	color: #333333;
 }
 .ui-widget-content a {

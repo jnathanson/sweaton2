@@ -8,6 +8,8 @@
 
 <%= render 'search' %>
 
+<%= gmaps4rails(@json) %>
+
 <% if @events.any? %>
 
   <ul class="events">

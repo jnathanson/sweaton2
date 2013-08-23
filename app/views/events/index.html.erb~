@@ -14,7 +14,7 @@
     <%= render @events, size: 52 %>
   </ul>
 
-  <%= will_paginate %>
+  <%= will_paginate @events %>
 
 <% else %>
 

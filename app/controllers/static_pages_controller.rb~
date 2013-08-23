@@ -7,15 +7,9 @@ class StaticPagesController < ApplicationController
     # in a different colour to other venues, and centres around your
     # saved Home address.
     if signed_in?
-      @venues = current_user.venues
       @events = current_user.events
 
       # Consolidate all your map markers into one json and plot:
-      @favs = @venues.to_gmaps4rails do |venue, marker|
-        marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
-        marker.title "#{venue.name}"
-        marker.picture({:picture => "/assets/tag_icons/favourite.png", :width => 32, :height => 32})
-      end
       @atts = @events.to_gmaps4rails do |event, marker|
         marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event})
         marker.title "#{event.name}"
@@ -24,7 +18,7 @@ class StaticPagesController < ApplicationController
       @house = current_user.to_gmaps4rails do |house, marker|
         marker.picture({:picture => "/assets/tag_icons/martial arts.png", :width => 32, :height => 32})
       end
-      @json = (JSON.parse(@favs) + JSON.parse(@atts) + JSON.parse(@house)).to_json
+      @json = (JSON.parse(@atts) + JSON.parse(@house)).to_json
 
     else
       @venues = Venue.all

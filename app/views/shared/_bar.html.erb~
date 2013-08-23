@@ -1,15 +1,7 @@
 <% if signed_in? %>
-  <nav>
-    <ul class="user-bar">
-      <% if signed_in? %>
-          <li><%= link_to current_user.name, user_path(current_user.id) %></li>
-          <li><%= link_to "Settings", edit_user_path(current_user.id) %></li>
-          <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
-      <% end %>
-    </ul>
-  </nav>
+  <%= render 'shared/user_bar' %>
   <br>
-  <%= render 'shared/navigation_buttons'
+  <%= render 'shared/navigation_buttons' %>
 <% else %>
   <%= render 'shared/tagline' %>
   <%= render 'sessions/login_tabs' %>
